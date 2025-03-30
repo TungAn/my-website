@@ -1,26 +1,14 @@
-# Portfolio Website Clone
+# Personal Portfolio Website
 
-This is a clone of Sean Kennedy's portfolio website (http://seanrk.com/). The website showcases his work experience, skills, and projects as a product designer and design leader.
+A modern, responsive portfolio website showcasing my work as a Design Leader and Software Engineer.
 
 ## Features
 
-- Modern, clean design
+- Clean, minimalist design
 - Responsive layout
 - Smooth animations
-- Dynamic project loading
-- Mobile-friendly
-
-## Setup
-
-1. Clone this repository
-2. Open `index.html` in your web browser
-
-## Structure
-
-- `index.html` - Main HTML structure
-- `styles.css` - All styling and animations
-- `script.js` - Dynamic content and interactions
-- `assets/` - Contains all images and SVG files
+- Mobile-first approach
+- Optimized performance
 
 ## Technologies Used
 
@@ -30,15 +18,46 @@ This is a clone of Sean Kennedy's portfolio website (http://seanrk.com/). The we
 - SVG for logos
 - Inter font family from Google Fonts
 
+## Structure
+
+```
+.
+├── index.html          # Main HTML file
+├── styles.css          # CSS styles
+├── script.js          # JavaScript functionality
+├── assets/            # Logo SVGs and images
+│   ├── ant-logo.svg
+│   ├── ey-logo.svg
+│   ├── glints-logo.svg
+│   └── vinomt-logo.svg
+└── README.md          # Documentation
+```
+
+## Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/portfolio-website.git
+   ```
+
+2. Open `index.html` in your browser
+
 ## Development
 
 To modify the website:
 
-1. Edit `index.html` for structure changes
+1. Edit `index.html` for content changes
 2. Modify `styles.css` for styling updates
-3. Update `script.js` for new functionality
+3. Update `script.js` for functionality changes
 4. Add new images to the `assets/` directory
 
-## Credits
+## Browser Support
 
-Original website design by Sean Kennedy (http://seanrk.com/) 
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## License
+
+MIT License - feel free to use this code for your own portfolio! 
