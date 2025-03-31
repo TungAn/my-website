@@ -1,7 +1,7 @@
 :root {
     --primary-color: #111111;
     --secondary-color: #666666;
-    --background-color: #f9f2e9;
+    --background-color: #f8f8f8;
     --background-alt: #fff;
     --accent-color: #333333;
     --spacing-unit: 5rem;
@@ -505,33 +505,60 @@ footer.is-visible { transition-delay: 0.35s; }
     background: var(--background-alt);
     border-radius: var(--border-radius);
     padding: 2rem;
-    transition: transform var(--transition-speed) ease;
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.8s ease-out;
-    will-change: opacity, transform;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity, box-shadow;
+}
+
+.project.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .project:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
-.project-header {
+.project .project-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1.5rem;
 }
 
-.project-header .year {
-    font-size: 0.875rem;
-    color: var(--secondary-color);
-    opacity: 0.8;
+.project .project-header img {
+    height: 32px;
+    width: auto;
+    transition: transform var(--transition-speed) ease;
 }
 
-.project-header img {
-    height: 24px;
-    width: auto;
+.project:hover .project-header img {
+    transform: scale(1.05);
+}
+
+.project .year {
+    font-size: 0.875rem;
+    color: var(--secondary-color);
+}
+
+.project .expand,
+.project-details .expand {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--accent-color);
+    font-size: 0.875rem;
+    transform: translateX(0);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.9;
+    will-change: transform, opacity;
+}
+
+.project:hover .expand,
+.project-details .expand:hover {
+    transform: translateX(4px);
+    opacity: 1;
 }
 
 .project-details h3 {
@@ -557,16 +584,17 @@ footer.is-visible { transition-delay: 0.35s; }
     font-size: 0.875rem;
     color: var(--accent-color);
     cursor: pointer;
-    transition: opacity var(--transition-speed) ease;
+    margin-top: 1rem;
+    transform: translateX(0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.9;
+    will-change: transform, opacity;
 }
 
 .project-details .expand:hover {
-    opacity: 0.8;
-}
-
-.is-visible .project {
+    transform: translateX(4px);
     opacity: 1;
-    transform: translateY(0);
 }
 
 .project-grid {
@@ -735,4 +763,11 @@ html {
     .current-role {
         padding: 1.5rem 0;
     }
+}
+
+.highlight {
+    color: var(--primary-color);
+    font-weight: 600;
+    position: relative;
+    white-space: nowrap;
 } 
