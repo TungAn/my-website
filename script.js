@@ -44,7 +44,10 @@ function initializeTheme() {
 const projects = [
     {
         year: '2025',
-        logo: 'assets/glints-logo.svg',
+        logo: {
+            dark: 'assets/glints-logo.svg',
+            light: 'assets/glints-logo-light.svg'
+        },
         title: 'Glints',
         subtitle: 'From Cold Application to Conversations',
         description: 'How a Chat-Driven Approach Increased Glints Matching Efficiency',
@@ -52,7 +55,10 @@ const projects = [
     },
     {
         year: '2018',
-        logo: 'assets/laz-logo.svg',
+        logo: {
+            dark: 'assets/laz-logo.svg',
+            light: 'assets/laz-logo-light.svg'
+        },
         title: 'Lazada',
         subtitle: 'E-commerce Payment Revamp',
         description: 'Transforming Digital Payments Across Southeast Asia',
@@ -60,7 +66,10 @@ const projects = [
     },
     {
         year: '2016',
-        logo: 'assets/popjam-logo.svg',
+        logo: {
+            dark: 'assets/popjam-logo.svg',
+            light: 'assets/popjam-logo-light.svg'
+        },
         title: 'PopJam',
         subtitle: 'Designing a Kid-Safe Social Network for the Asian Market',
         expandable: true
@@ -79,7 +88,10 @@ function populateProjects() {
         projectElement.innerHTML = `
             <div class="project-header">
                 <span class="year">${project.year}</span>
-                <img src="${project.logo}" alt="${project.title} Logo">
+                <div class="logo-container">
+                    <img class="logo-dark" src="${project.logo.dark}" alt="${project.title} Logo">
+                    <img class="logo-light" src="${project.logo.light}" alt="${project.title} Logo Light">
+                </div>
             </div>
             <div class="project-details">
                 <h3>${project.title}</h3>
