@@ -12,6 +12,8 @@
     --border-radius: 12px;
     --header-height: 5rem;
     --scroll-margin: calc(var(--header-height) + 2rem);
+    --highlight-color: rgba(255, 107, 0, 0.8);
+    --highlight-color-secondary: rgba(255, 165, 0, 0.9);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -1316,4 +1318,36 @@ body {
         height: 32px;
         margin-bottom: 1.5rem;
     }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+#approach .highlight {
+    background: linear-gradient(
+        120deg,
+        var(--highlight-color) 0%,
+        var(--highlight-color-secondary) 50%,
+        var(--highlight-color) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 8s ease infinite;
+    padding: 0 0.1em;
+}
+
+[data-theme="light"] {
+    --highlight-color: rgba(255, 107, 0, 0.7);
+    --highlight-color-secondary: rgba(255, 165, 0, 0.8);
 } 
