@@ -50,28 +50,73 @@ function populateProjects() {
     });
 }
 
-// Smooth scroll for navigation with URL hash update
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const target = document.querySelector(targetId);
-        
-        if (target) {
-            // Update URL hash without jumping
-            window.history.pushState(null, '', targetId);
-            
-            // Smooth scroll to target
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Handle initial hash in URL
+// Add scroll functionality for experience section
 document.addEventListener('DOMContentLoaded', function() {
+    const scrollLeft = document.querySelector('#experience .scroll-left');
+    const scrollRight = document.querySelector('#experience .scroll-right');
+    const companyGrid = document.querySelector('#experience .company-grid');
+    
+    if (scrollLeft && scrollRight && companyGrid) {
+        const scrollAmount = window.innerWidth >= 768 ? 432 : window.innerWidth * 0.85;
+        
+        // Initially hide left arrow and show right arrow if there's scrollable content
+        scrollLeft.style.display = 'none';
+        scrollRight.style.display = companyGrid.scrollWidth > companyGrid.clientWidth ? 'flex' : 'none';
+        
+        const updateArrowVisibility = () => {
+            // Show/hide left arrow based on scroll position
+            scrollLeft.style.display = companyGrid.scrollLeft > 0 ? 'flex' : 'none';
+            
+            // Show/hide right arrow based on remaining scroll
+            const maxScroll = companyGrid.scrollWidth - companyGrid.clientWidth;
+            const isAtEnd = Math.ceil(companyGrid.scrollLeft) >= maxScroll;
+            scrollRight.style.display = isAtEnd ? 'none' : 'flex';
+        };
+        
+        scrollLeft.addEventListener('click', () => {
+            companyGrid.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+        
+        scrollRight.addEventListener('click', () => {
+            companyGrid.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Update arrow visibility on scroll
+        companyGrid.addEventListener('scroll', updateArrowVisibility);
+        
+        // Update arrow visibility on window resize
+        window.addEventListener('resize', () => {
+            updateArrowVisibility();
+        });
+    }
+
+    // Smooth scroll for navigation with URL hash update
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+            
+            if (target) {
+                // Update URL hash without jumping
+                window.history.pushState(null, '', targetId);
+                
+                // Smooth scroll to target
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Handle initial hash in URL
     if (window.location.hash) {
         const target = document.querySelector(window.location.hash);
         if (target) {
