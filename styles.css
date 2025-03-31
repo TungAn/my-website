@@ -572,17 +572,6 @@ footer.is-visible {
         padding: 0 2rem;
     }
 
-    /* Remove any remaining section-specific padding */
-    @media (max-width: 480px) {
-        header {
-            padding: 1rem var(--mobile-padding);
-        }
-
-        footer {
-            margin: 3rem 0;
-            padding: 0 var(--mobile-padding);
-        }
-    }
 
     .company-grid {
         display: flex;
@@ -690,7 +679,7 @@ footer.is-visible {
 
     footer {
         margin: 3rem auto;
-        padding: 0 2rem;
+        padding: 0 2.5rem;
     }
 
     .contact-links {
