@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="120" height="40" viewBox="0 0 120 40" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0" y="0" width="120" height="40" fill="#FFE600"/>
-    <path fill="#000000" d="M20,10 h30 v6 h-22 v6 h20 v6 h-20 v6 h22 v6 h-30 z"/>
-    <path fill="#000000" d="M60,10 h8 l12,12 v-12 h8 v30 h-8 l-12,-12 v12 h-8 z"/>
-</svg> 
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="40" viewBox="0 0 68.67 69.32">
+<style>
+  .logo-path {
+    fill: var(--text-color);
+  }
+  .yellow-path {
+    fill: #FFE600;
+  }
+  @media (prefers-color-scheme: dark) {
+    .logo-path {
+      fill: #ffffff;
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    .logo-path {
+      fill: #161d23;
+    }
+  }
+</style>
+<path class="logo-path" d="M11.09 61.4h17.37v7.92H.67V34.9h19.7l4.61 7.92H11.1v5.68h12.56v7.22H11.1zm35.86-26.5l-5.9 11.23-5.88-11.23H23.65l12.13 20.82v13.6h10.4v-13.6L58.31 34.9z" fill-rule="evenodd"/>
+<path class="yellow-path" d="M68.67 12.81V0L0 24.83z" fill-rule="evenodd"/>
+</svg>
