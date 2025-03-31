@@ -192,7 +192,7 @@ section {
     transform: translateY(30px);
     transition: 
         opacity 0.6s ease-out,
-        transform 0.8s ease-out,
+        transform 0.6s ease-out,
         background-color var(--transition-speed) ease,
         color var(--transition-speed) ease;
     will-change: opacity, transform;
@@ -449,8 +449,8 @@ footer {
     position: relative;
     z-index: 2;
     opacity: 0;
-    transform: translateY(30px);
-    transition: all var(--transition-speed) ease;
+    transform: translateY(2rem);
+    transition: all 0.6s ease-out !important;
     will-change: opacity, transform;
 }
 
@@ -701,7 +701,7 @@ footer.is-visible {
 }
 
 /* Base theme transitions */
-.company, .project, .expertise-item, footer, header, body, .scroll-arrow, 
+.company, .project, .expertise-item, header, body, .scroll-arrow, 
 .company-details li, .company-details li::before, h1, h2, h3, p, a {
     transition: 
         all var(--transition-speed) ease !important;
@@ -715,7 +715,7 @@ section {
     transform: translateY(30px);
     transition: 
         opacity 0.6s ease-out,
-        transform 0.8s ease-out,
+        transform 0.6s ease-out,
         background-color var(--transition-speed) ease,
         color var(--transition-speed) ease;
     will-change: opacity, transform;
@@ -1154,18 +1154,10 @@ main {
 .project,
 .expertise-item,
 section {
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 2rem, 0);
     backface-visibility: hidden;
     perspective: 1000px;
     will-change: transform, opacity;
-}
-
-/* Optimize noise texture */
-.noise {
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    perspective: 1000px;
-    will-change: transform;
 }
 
 /* Force GPU acceleration for smoother scrolling */
