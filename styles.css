@@ -233,27 +233,6 @@ h2 {
     padding: 0 2rem;
 }
 
-#experience::before,
-#experience::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 4rem;
-    pointer-events: none;
-    z-index: 90;
-}
-
-#experience::before {
-    left: 0;
-    background: linear-gradient(to right, var(--background-color), transparent);
-}
-
-#experience::after {
-    right: 0;
-    background: linear-gradient(to left, var(--background-color), transparent);
-}
-
 .scroll-container {
     position: relative;
     max-width: 100%;
@@ -442,102 +421,163 @@ footer h2 {
 @media (max-width: 768px) {
     :root {
         --spacing-unit: 3rem;
+        --mobile-padding: 1.5rem;
     }
 
+    main {
+        display: flex;
+        flex-direction: column;
+        padding: 0 var(--mobile-padding);
+    }
+
+    /* Section order */
+    #intro { order: 1; }
+    #approach { order: 2; }
+    #projects { order: 3; }
+    #current { order: 4; }
+    #experience { order: 5; }
+    #expertise { order: 6; }
+
+    /* Typography */
     h2 {
-        font-size: 3rem;
-        letter-spacing: -0.02em;
-    }
-
-    #approach h2 {
-        font-size: 2.25rem;
-    }
-
-    .intro-text {
-        font-size: 1.5rem;
+        font-size: 2rem;
         line-height: 1.4;
-    }
-
-    header {
-        padding: 2rem;
-    }
-
-    nav a {
-        margin-left: 1.5rem;
-    }
-
-    .company-grid,
-    .expertise-grid {
-        gap: 3rem;
-        margin-top: 3rem;
-    }
-
-    footer {
-        margin: 6rem auto 4rem;
-    }
-
-    footer h2 {
-        font-size: 2.25rem;
         margin-bottom: 2rem;
     }
 
-    .contact-links a {
-        display: block;
+    header {
+        padding: 2rem var(--mobile-padding);
+    }
+
+    section {
+        margin: var(--spacing-unit) 0;
+        padding: 0;
+    }
+
+    #experience {
+        width: 100%;
+        left: auto;
+        right: auto;
+        margin: var(--spacing-unit) 0;
+        padding: 0 var(--mobile-padding);
+        background: none;
+    }
+
+    #experience h2 {
+        padding: 0;
+        margin-bottom: 2rem;
+    }
+
+    footer {
+        margin: 4rem 0;
+        padding: 0 var(--mobile-padding);
+    }
+
+    /* Remove any remaining section-specific padding */
+    @media (max-width: 480px) {
+        header {
+            padding: 1rem var(--mobile-padding);
+        }
+
+        footer {
+            margin: 3rem 0;
+            padding: 0 var(--mobile-padding);
+        }
+    }
+
+    .company-grid {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        overflow: visible;
+        gap: 1.5rem;
+        margin: 0;
+    }
+
+    .company {
+        flex: none;
+        width: 100%;
+        min-width: unset;
+        background: var(--background-alt);
+        border-radius: var(--border-radius);
+        padding: 1.5rem;
+        margin: 0;
+    }
+
+    .company img {
+        max-width: 60px;
         margin-bottom: 1.5rem;
     }
 
+    /* Remove scroll functionality */
+    .scroll-arrow {
+        display: none;
+    }
+
+    /* Project grid */
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+
+    /* Expertise grid */
     .expertise-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
-        margin-top: 3rem;
+        margin-top: 2rem;
     }
-    
-    .expertise-item {
-        max-width: 100%;
+
+    .current-role {
+        padding: 1.5rem;
+        background: var(--background-alt);
+        border-radius: var(--border-radius);
     }
-    
-    .expertise-item h3 {
-        font-size: 1.25rem;
-        margin-bottom: 0.875rem;
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 1rem;
     }
-    
-    .expertise-item p {
+
+    header nav {
+        gap: 1rem;
+    }
+
+    section {
+        padding: 0 1rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    #intro h2 {
+        font-size: 1.75rem;
+    }
+
+    .intro-text {
         font-size: 1rem;
     }
 
     .company {
-        flex: 0 0 85vw;
-        min-width: 85vw;
-    }
-    
-    .company-grid {
-        gap: 1rem;
-        padding: 1.5rem 1rem;
+        flex: 0 0 90%;
+        padding: 1.25rem;
     }
 
-    .scroll-container {
-        padding: 0;
-    }
-    
-    .scroll-arrow {
-        width: 40px;
-        height: 40px;
-    }
-    
-    .scroll-left {
-        left: 20px;
-    }
-    
-    .scroll-right {
-        right: 20px;
+    .company img {
+        height: 24px;
     }
 
-    #experience h2 {
+    footer {
+        margin: 3rem auto;
         padding: 0 1rem;
     }
 
-    header nav {
-        gap: 1.5rem;
+    .contact-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
     }
 }
 
@@ -792,13 +832,6 @@ html {
     }
 }
 
-@media (max-width: 1200px) {
-    .company-grid {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
-}
-
 .current-role-grid {
     display: flex;
     gap: 2rem;
@@ -810,6 +843,14 @@ html {
 .current-role {
     flex: 1;
     width: 100%;
+    background: var(--background-alt);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    transition: transform var(--transition-speed) ease;
+}
+
+.current-role:hover {
+    transform: translateY(-5px);
 }
 
 .current-role img {
