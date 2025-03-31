@@ -193,13 +193,17 @@ header .logo-container {
     height: 32px;
     width: 32px;
     margin-right: 1rem;
-    display: flex;
-    align-items: center;
+    position: relative;
 }
 
 header .logo-container img {
     height: 100%;
     width: auto;
+    position: absolute;
+}
+
+header h1 {
+    transition: none !important;
 }
 
 @media (max-width: 768px) {
@@ -1240,21 +1244,33 @@ body {
 
 /* Logo theme variants */
 .logo-container {
-    position: relative;
-    width: fit-content;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    height: 32px;
+    width: auto;
+    text-decoration: none;
+    transition: opacity var(--transition-speed) ease;
 }
 
-.logo-light, .logo-dark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: 
-        opacity var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1),
-        visibility var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: opacity, visibility;
+.logo-container:hover {
+    opacity: 0.8;
+}
+
+.logo-container img {
+    height: 100%;
+    width: auto;
+}
+
+@media (max-width: 768px) {
+    .logo-container {
+        height: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-container {
+        height: 24px;
+    }
 }
 
 /* Show dark logo in dark theme */
@@ -1539,5 +1555,51 @@ body {
 .name-group {
     display: flex;
     align-items: center;
+}
+
+.name-link {
+    display: flex;
+    align-items: center;
     gap: 0.25rem;
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: opacity var(--transition-speed) ease;
+}
+
+.name-link:hover {
+    opacity: 0.8;
+}
+
+.name-link h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    width: auto;
+}
+
+.logo-container img {
+    height: 100%;
+    width: auto;
+}
+
+@media (max-width: 768px) {
+    .logo-container {
+        height: 28px;
+    }
+    
+    .name-link h1 {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-container {
+        height: 24px;
+    }
 } 
