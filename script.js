@@ -1,48 +1,25 @@
 // Project data
 const projects = [
     {
-        year: '2020',
-        logo: 'assets/beats-logo.svg',
-        title: 'Beats by Dre',
-        subtitle: 'Native app for device manufacturing',
-        description: 'NDA',
-        expandable: true
-    },
-    {
-        year: '2020',
-        logo: 'assets/apple-tv-plus-logo.svg',
-        title: 'Apple TV+',
-        subtitle: 'Remote design sprint',
-        description: 'NDA',
-        expandable: true
-    },
-    {
-        year: '2020',
-        logo: 'assets/apple-logo.svg',
-        title: 'Apple',
-        subtitle: 'Intranet design system',
-        description: 'NDA',
-        expandable: true
-    },
-    {
-        year: '2019',
-        logo: 'assets/skyslope-logo.svg',
-        title: 'SkySlope',
-        subtitle: 'Sketch to ReactJS design system',
+        year: '2025',
+        logo: 'assets/glints-logo.svg',
+        title: 'Glints',
+        subtitle: 'From Cold Application to Conversations',
+        description: 'How a Chat-Driven Approach Increased Glints Matching Efficiency',
         expandable: true
     },
     {
         year: '2018',
-        logo: 'assets/csis-logo.svg',
-        title: 'CSIS',
-        subtitle: 'Gov. agency rebrand',
+        logo: 'assets/ant-logo.svg',
+        title: 'Lazada Payment Revamp',
+        subtitle: 'Transforming Digital Payments Across Southeast Asia',
         expandable: true
     },
     {
         year: '2016',
-        logo: 'assets/axomo-logo.svg',
-        title: 'Axomo.com',
-        subtitle: 'Ecommerce platform',
+        logo: 'assets/popjam-logo.svg',
+        title: 'PopJam',
+        subtitle: 'Designing a Kid-Safe Social Network for the Asian Market',
         expandable: true
     }
 ];
@@ -50,6 +27,7 @@ const projects = [
 // Populate projects
 function populateProjects() {
     const projectGrid = document.querySelector('.project-grid');
+    if (!projectGrid) return; // Exit if element doesn't exist
     
     projects.forEach(project => {
         const projectElement = document.createElement('div');
@@ -64,7 +42,7 @@ function populateProjects() {
                 <h3>${project.title}</h3>
                 <p>${project.subtitle}</p>
                 ${project.description ? `<p class="description">${project.description}</p>` : ''}
-                ${project.expandable ? '<span class="expand">Expand</span>' : ''}
+                ${project.expandable ? '<span class="expand">Read case study →</span>' : ''}
             </div>
         `;
         
@@ -87,24 +65,28 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Intersection Observer for fade-in animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('section');
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            observer.unobserve(entry.target);
-        }
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // Optional: Unobserve after animation
+                // observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        observer.observe(section);
     });
-}, observerOptions);
-
-// Observe all sections
-document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
 });
 
 // Initialize

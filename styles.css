@@ -64,10 +64,15 @@ nav a:hover {
 section {
     margin: calc(var(--spacing-unit) * 2) 0;
     position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 1.2s ease-out;
+    will-change: opacity, transform;
+}
+
+section.is-visible {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity var(--transition-speed) ease,
-                transform var(--transition-speed) ease;
 }
 
 h2 {
@@ -91,7 +96,7 @@ h2 {
 
 #approach h2 {
     font-size: 2.75rem;
-    max-width: 1200px;
+    max-width: 1000px;
     color: var(--secondary-color);
     font-weight: 500;
 }
@@ -107,6 +112,10 @@ h2 {
     padding: 0;
     border: none;
     transition: transform var(--transition-speed) ease;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
 }
 
 .company:hover {
@@ -139,16 +148,30 @@ h2 {
     line-height: 1.7;
 }
 
+.is-visible .company, .is-visible .company:hover {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.is-visible .company:nth-child(1) { transition-delay: 0.2s; }
+.is-visible .company:nth-child(2) { transition-delay: 0.4s; }
+.is-visible .company:nth-child(3) { transition-delay: 0.6s; }
+
 .expertise-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 4rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
     margin-top: 4rem;
+    max-width: var(--max-width);
 }
 
 .expertise-item {
     padding: 0;
     transition: transform var(--transition-speed) ease;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
 }
 
 .expertise-item:hover {
@@ -157,10 +180,10 @@ h2 {
 
 .expertise-item h3 {
     font-size: 1.25rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
     font-weight: 600;
     color: var(--primary-color);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
 }
 
 .expertise-item p {
@@ -168,6 +191,15 @@ h2 {
     color: var(--secondary-color);
     line-height: 1.7;
 }
+
+.is-visible .expertise-item, .is-visible .expertise-item:hover {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.is-visible .expertise-item:nth-child(1) { transition-delay: 0.2s; }
+.is-visible .expertise-item:nth-child(2) { transition-delay: 0.4s; }
+.is-visible .expertise-item:nth-child(3) { transition-delay: 0.6s; }
 
 footer {
     max-width: var(--max-width);
@@ -219,6 +251,13 @@ footer h2 {
     transform-origin: left;
 }
 
+@media (max-width: 1024px) {
+    .expertise-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+}
+
 @media (max-width: 768px) {
     :root {
         --spacing-unit: 3rem;
@@ -264,10 +303,29 @@ footer h2 {
         display: block;
         margin-bottom: 1.5rem;
     }
+
+    .expertise-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+    
+    .expertise-item {
+        max-width: 100%;
+    }
+    
+    .expertise-item h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.875rem;
+    }
+    
+    .expertise-item p {
+        font-size: 1rem;
+    }
 }
 
-/* Animation for page load */
-@keyframes fadeIn {
+/* Base fade-in animation */
+@keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(30px);
@@ -278,16 +336,32 @@ footer h2 {
     }
 }
 
-section {
-    animation: fadeIn 1s ease-out forwards;
-    opacity: 0;
+/* Stagger the animations for different sections */
+#intro.is-visible { transition-delay: 0.2s; }
+#approach.is-visible { transition-delay: 0.4s; }
+#current.is-visible { transition-delay: 0.6s; }
+#experience.is-visible { transition-delay: 0.8s; }
+#expertise.is-visible { transition-delay: 1s; }
+
+/* Company and expertise items fade in */
+.is-visible .company, .is-visible .expertise-item {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-section:nth-child(1) { animation-delay: 0.2s; }
-section:nth-child(2) { animation-delay: 0.4s; }
-section:nth-child(3) { animation-delay: 0.6s; }
-section:nth-child(4) { animation-delay: 0.8s; }
-section:nth-child(5) { animation-delay: 1s; }
+/* Stagger company and expertise items */
+.is-visible .company:nth-child(1) { transition-delay: 0.2s; }
+.is-visible .company:nth-child(2) { transition-delay: 0.4s; }
+.is-visible .company:nth-child(3) { transition-delay: 0.6s; }
+
+.is-visible .expertise-item:nth-child(1) { transition-delay: 0.2s; }
+.is-visible .expertise-item:nth-child(2) { transition-delay: 0.4s; }
+.is-visible .expertise-item:nth-child(3) { transition-delay: 0.6s; }
+
+/* Remove existing animation keyframes and section animation */
+section {
+    animation: none;
+}
 
 .project {
     cursor: pointer;
@@ -315,4 +389,78 @@ section:nth-child(5) { animation-delay: 1s; }
 .description {
     margin-top: 0.5rem;
     color: var(--secondary-color);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+.project {
+    background: var(--background-alt);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    transition: transform var(--transition-speed) ease;
+}
+
+.project:hover {
+    transform: translateY(-5px);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.project-header .year {
+    font-size: 0.875rem;
+    color: var(--secondary-color);
+    opacity: 0.8;
+}
+
+.project-header img {
+    height: 24px;
+    width: auto;
+}
+
+.project-details h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.project-details p {
+    font-size: 1rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.project-details .description {
+    font-size: 0.875rem;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+.project-details .expand {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: var(--accent-color);
+    cursor: pointer;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.project-details .expand:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 3rem;
+    }
 } 
