@@ -1,20 +1,32 @@
 // Theme switching
 function initializeTheme() {
     const themeToggle = document.getElementById('theme-toggle');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
     const storedTheme = localStorage.getItem('theme');
     
-    // Set initial theme based on stored preference or system preference
+    // Set initial theme based on stored preference, system preference, or default to dark
     if (storedTheme) {
         document.documentElement.setAttribute('data-theme', storedTheme);
-    } else if (prefersDark) {
-        document.documentElement.removeAttribute('data-theme');
+    } else if (prefersDark.matches !== null) {
+        // System preference detected
+        if (prefersDark.matches) {
+            document.documentElement.removeAttribute('data-theme');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    } else {
+        // System preference not detected, default to dark
+        document.documentElement.setAttribute('data-theme', 'dark');
     }
     
     // Listen for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    prefersDark.addEventListener('change', (e) => {
         if (!localStorage.getItem('theme')) {
-            document.documentElement.removeAttribute('data-theme');
+            if (e.matches) {
+                document.documentElement.removeAttribute('data-theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
         }
     });
     
