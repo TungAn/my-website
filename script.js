@@ -41,8 +41,9 @@ const projects = [
     {
         year: '2018',
         logo: 'assets/ant-logo.svg',
-        title: 'Lazada Payment Revamp',
-        subtitle: 'Transforming Digital Payments Across Southeast Asia',
+        title: 'Lazada',
+        subtitle: 'E-commerce Payment Revamp',
+        description: 'Transforming Digital Payments Across Southeast Asia',
         expandable: true
     },
     {
