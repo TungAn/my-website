@@ -387,11 +387,6 @@ footer h2 {
     line-height: 1.7;
 }
 
-.is-visible .company, .is-visible .company:hover {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 .is-visible .company:nth-child(1) { transition-delay: 0.05s; }
 .is-visible .company:nth-child(2) { transition-delay: 0.1s; }
 .is-visible .company:nth-child(3) { transition-delay: 0.15s; }
@@ -707,9 +702,7 @@ footer.is-visible {
 .company, .project, .expertise-item, footer, header, body, .scroll-arrow, 
 .company-details li, .company-details li::before, h1, h2, h3, p, a {
     transition: 
-        background-color var(--transition-speed) ease,
-        color var(--transition-speed) ease,
-        border-color var(--transition-speed) ease !important;
+        all var(--transition-speed) ease !important;
 }
 
 /* Scroll fade-in animations */
@@ -756,9 +749,6 @@ section.is-visible {
     padding: 2rem;
     opacity: 0;
     transform: translateY(20px);
-    transition: 
-        transform var(--transition-speed) ease,
-        box-shadow var(--transition-speed) ease;
     will-change: transform, box-shadow;
 }
 
