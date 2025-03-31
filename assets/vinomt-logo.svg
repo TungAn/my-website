@@ -1,32 +1,10 @@
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
- "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width="225.000000pt" height="225.000000pt" viewBox="0 0 225.000000 225.000000"
- preserveAspectRatio="xMidYMid meet">
-<metadata>
-Created by potrace 1.10, written by Peter Selinger 2001-2011
-</metadata>
-<style>
-  path {
-    fill: var(--text-color);
-  }
-  @media (prefers-color-scheme: dark) {
-    path {
-      fill: #ffffff;
-    }
-  }
-  @media (prefers-color-scheme: light) {
-    path {
-      fill: #000000;
-    }
-  }
-</style>
-<g transform="translate(0.000000,225.000000) scale(0.050000,-0.050000)"
-fill="#000000" stroke="none">
-<path d="M2025 4080 c-989 -139 -1612 -889 -1612 -1940 0 -1040 655 -1774
-1577 -1769 464 3 740 128 1135 515 86 83 250 225 366 314 1345 1038 282 3126
--1466 2880z m711 -1259 c464 -248 682 -951 483 -1553 -65 -196 -68 -198 -272
--197 -707 4 -1286 749 -1087 1396 122 392 510 549 876 354z"/>
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_16008_8721)">
+<path d="M34.9857 0.428469C13.5211 3.4105 0 19.5006 0 42.0482C0 64.3599 14.2157 80.1067 34.2261 79.9995C44.2964 79.9351 50.2865 77.2534 58.8593 68.9509C60.7258 67.1703 64.2851 64.1239 66.8027 62.2145C95.9936 39.9458 72.923 -4.84909 34.9857 0.428469ZM50.4167 27.4384C60.4871 32.7589 65.2184 47.8407 60.8994 60.7557C59.4887 64.9606 59.4236 65.0035 54.9961 64.982C39.6519 64.8962 27.0857 48.9134 31.4047 35.0329C34.0525 26.6232 42.4733 23.255 50.4167 27.4384Z" fill="white"/>
 </g>
+<defs>
+<clipPath id="clip0_16008_8721">
+<rect width="80" height="80" fill="white"/>
+</clipPath>
+</defs>
 </svg>
