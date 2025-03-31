@@ -1153,6 +1153,7 @@ body {
     transform: translate3d(0, 0, 0);
 }
 
+
 /* Optimize scroll behavior */
 .company-grid {
     -webkit-overflow-scrolling: touch;
