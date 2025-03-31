@@ -50,12 +50,18 @@ function populateProjects() {
     });
 }
 
-// Smooth scroll for navigation
+// Smooth scroll for navigation with URL hash update
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        
         if (target) {
+            // Update URL hash without jumping
+            window.history.pushState(null, '', targetId);
+            
+            // Smooth scroll to target
             target.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
@@ -64,8 +70,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Intersection Observer for fade-in animations
+// Handle initial hash in URL
 document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+    
+    // Rest of your DOMContentLoaded code...
     const sections = document.querySelectorAll('section');
     
     const observerOptions = {
@@ -78,8 +95,6 @@ document.addEventListener('DOMContentLoaded', function() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                // Optional: Unobserve after animation
-                // observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
@@ -89,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Initialize
+// Initialize projects
 document.addEventListener('DOMContentLoaded', () => {
     populateProjects();
 }); 
