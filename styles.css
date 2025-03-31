@@ -262,7 +262,6 @@ h2 {
 .company {
     flex: 0 0 400px;
     min-width: 400px;
-    border-radius: var(--border-radius);
     padding: 2rem;
     transition: transform var(--transition-speed) ease;
 }
@@ -440,7 +439,7 @@ footer h2 {
 
     /* Typography */
     h2 {
-        font-size: 2rem;
+        font-size: 1.75rem;
         line-height: 1.4;
         margin-bottom: 2rem;
     }
@@ -459,7 +458,7 @@ footer h2 {
         left: auto;
         right: auto;
         margin: var(--spacing-unit) 0;
-        padding: 0 var(--mobile-padding);
+        padding: 0 1rem;
         background: none;
     }
 
@@ -470,7 +469,7 @@ footer h2 {
 
     footer {
         margin: 4rem 0;
-        padding: 0 var(--mobile-padding);
+        padding: 0 2rem;
     }
 
     /* Remove any remaining section-specific padding */
@@ -498,10 +497,10 @@ footer h2 {
         flex: none;
         width: 100%;
         min-width: unset;
-        background: var(--background-alt);
-        border-radius: var(--border-radius);
-        padding: 1.5rem;
+        padding: 0;
         margin: 0;
+        background: none;
+        border-radius: 0;
     }
 
     .company img {
@@ -529,14 +528,35 @@ footer h2 {
     }
 
     .current-role {
-        padding: 1.5rem;
-        background: var(--background-alt);
-        border-radius: var(--border-radius);
+        padding: 0;
+        background: none;
+        border-radius: 0;
+    }
+
+    .current-role img {
+        max-width: 60px;
+        margin-bottom: 1.5rem;
     }
 
     #approach h2 {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
         line-height: 1.5;
+        white-space: normal;
+    }
+
+    #approach h2 .highlight {
+        white-space: normal;
+        display: inline;
+    }
+
+    .highlight {
+        white-space: normal;
+        display: inline;
+    }
+
+    footer h2 {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
     }
 }
 
@@ -554,7 +574,7 @@ footer h2 {
     }
 
     h2 {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
     }
 
     #intro h2 {
@@ -567,7 +587,6 @@ footer h2 {
 
     .company {
         flex: 0 0 90%;
-        padding: 1.25rem;
     }
 
     .company img {
@@ -576,7 +595,7 @@ footer h2 {
 
     footer {
         margin: 3rem auto;
-        padding: 0 1rem;
+        padding: 0 2rem;
     }
 
     .contact-links {
@@ -848,14 +867,13 @@ html {
 .current-role {
     flex: 1;
     width: 100%;
-    background: var(--background-alt);
-    border-radius: var(--border-radius);
-    padding: 2rem;
+    padding: 2rem 0;
     transition: transform var(--transition-speed) ease;
 }
 
+/* Remove hover effect */
 .current-role:hover {
-    transform: translateY(-5px);
+    transform: none;
 }
 
 .current-role img {
@@ -882,7 +900,14 @@ html {
 
 @media (max-width: 768px) {
     .current-role {
-        padding: 1.5rem;
+        padding: 0;
+        background: none;
+        border-radius: 0;
+    }
+
+    .current-role img {
+        max-width: 60px;
+        margin-bottom: 1.5rem;
     }
 }
 
@@ -890,5 +915,5 @@ html {
     color: var(--primary-color);
     font-weight: 600;
     position: relative;
-    white-space: nowrap;
+    display: inline;
 } 
