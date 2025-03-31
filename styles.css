@@ -189,6 +189,29 @@ header nav a:hover::after {
     transform-origin: bottom left;
 }
 
+header .logo-container {
+    height: 32px;
+    width: auto;
+    margin-right: 1rem;
+}
+
+header .logo-container img {
+    height: 100%;
+    width: auto;
+}
+
+@media (max-width: 768px) {
+    header .logo-container {
+        height: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    header .logo-container {
+        height: 24px;
+    }
+}
+
 section {
     margin: calc(var(--spacing-unit) * 2) 0;
     position: relative;
