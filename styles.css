@@ -191,8 +191,10 @@ header nav a:hover::after {
 
 header .logo-container {
     height: 32px;
-    width: auto;
+    width: 32px;
     margin-right: 1rem;
+    display: flex;
+    align-items: center;
 }
 
 header .logo-container img {
@@ -209,6 +211,10 @@ header .logo-container img {
 @media (max-width: 480px) {
     header .logo-container {
         height: 24px;
+    }
+    
+    .name-group {
+        gap: 0.15rem;
     }
 }
 
@@ -1524,4 +1530,10 @@ body {
         height: 20px;
         padding-top: 0.2rem;
     }
+}
+
+.name-group {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
 } 
