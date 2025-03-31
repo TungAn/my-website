@@ -10,6 +10,80 @@
     --border-radius: 12px;
 }
 
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+        --primary-color: #ffffff;
+        --secondary-color: #a0a0a0;
+        --background-color: #111111;
+        --background-alt: #1a1a1a;
+        --accent-color: #e0e0e0;
+    }
+}
+
+[data-theme='dark'] {
+    --primary-color: #ffffff;
+    --secondary-color: #a0a0a0;
+    --background-color: #111111;
+    --background-alt: #1a1a1a;
+    --accent-color: #e0e0e0;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+    height: 24px;
+    margin-left: 0.5rem;
+}
+
+#theme-toggle:hover {
+    opacity: 0.8;
+}
+
+#theme-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+#theme-toggle .light-icon {
+    display: none;
+}
+
+#theme-toggle .dark-icon {
+    display: block;
+}
+
+[data-theme='dark'] #theme-toggle .light-icon {
+    display: block;
+}
+
+[data-theme='dark'] #theme-toggle .dark-icon {
+    display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) #theme-toggle .light-icon {
+        display: block;
+    }
+    
+    :root:not([data-theme='light']) #theme-toggle .dark-icon {
+        display: none;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -45,26 +119,15 @@ header {
     z-index: 2;
 }
 
-h1 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-}
-
-h1 a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: opacity var(--transition-speed) ease;
-}
-
-h1 a:hover {
-    opacity: 0.8;
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
 }
 
 header nav a {
     color: var(--primary-color);
     text-decoration: none;
-    margin-left: 2.5rem;
     font-weight: 500;
     font-size: 1rem;
     position: relative;
@@ -107,6 +170,22 @@ section#projects {
 section.is-visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+h1 a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: opacity var(--transition-speed) ease;
+}
+
+h1 a:hover {
+    opacity: 0.8;
 }
 
 h2 {
@@ -456,6 +535,10 @@ footer h2 {
     #experience h2 {
         padding: 0 1rem;
     }
+
+    header nav {
+        gap: 1.5rem;
+    }
 }
 
 /* Base fade-in animation */
@@ -652,7 +735,7 @@ html {
     height: 44px;
     border-radius: 50%;
     background: var(--primary-color);
-    color: white;
+    color: var(--background-color);
     border: none;
     cursor: pointer;
     font-size: 2rem;
@@ -661,8 +744,8 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: background-color 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
     user-select: none;
@@ -671,7 +754,9 @@ html {
 }
 
 .scroll-arrow:hover {
-    background: var(--accent-color);
+    background: var(--primary-color);
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .scroll-arrow.bounce {
@@ -724,12 +809,7 @@ html {
 
 .current-role {
     flex: 1;
-    padding: 2rem 0;
-    transition: transform var(--transition-speed) ease;
-}
-
-.current-role:hover {
-    transform: translateY(-5px);
+    width: 100%;
 }
 
 .current-role img {
@@ -737,11 +817,6 @@ html {
     height: auto;
     margin-bottom: 2rem;
     opacity: 0.9;
-    transition: opacity var(--transition-speed) ease;
-}
-
-.current-role:hover img {
-    opacity: 1;
 }
 
 .current-role h3 {
@@ -756,12 +831,12 @@ html {
     font-size: 1rem;
     color: var(--secondary-color);
     line-height: 1.7;
-    max-width: 600px;
+    width: 100%;
 }
 
 @media (max-width: 768px) {
     .current-role {
-        padding: 1.5rem 0;
+        padding: 1.5rem;
     }
 }
 

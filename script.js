@@ -1,3 +1,33 @@
+// Theme switching
+function initializeTheme() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const storedTheme = localStorage.getItem('theme');
+    
+    // Set initial theme based on stored preference or system preference
+    if (storedTheme) {
+        document.documentElement.setAttribute('data-theme', storedTheme);
+    } else if (prefersDark) {
+        document.documentElement.removeAttribute('data-theme');
+    }
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            document.documentElement.removeAttribute('data-theme');
+        }
+    });
+    
+    // Handle manual theme toggle
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+}
+
 // Project data
 const projects = [
     {
@@ -160,5 +190,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Initialize projects
 document.addEventListener('DOMContentLoaded', () => {
+    initializeTheme();
     populateProjects();
 }); 
