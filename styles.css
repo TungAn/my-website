@@ -206,6 +206,10 @@ header .logo-container img {
     header .logo-container {
         height: 28px;
     }
+    
+    .name-group h1 {
+        display: none;
+    }
 }
 
 @media (max-width: 480px) {
