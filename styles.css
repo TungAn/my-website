@@ -10,6 +10,8 @@
     --max-width: 1200px;
     --transition-speed: 0.3s;
     --border-radius: 12px;
+    --header-height: 5rem;
+    --scroll-margin: calc(var(--header-height) + 2rem);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -39,6 +41,10 @@ body {
     color: var(--primary-color);
     font-family: 'Inter', sans-serif;
     transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    transform: translate3d(0, 0, 0);
 }
 
 #theme-toggle {
@@ -95,6 +101,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -104,35 +111,42 @@ body {
     background-color: var(--background-color);
     padding: 0;
     margin: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 main {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 5rem 2rem 0;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 2rem;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
+    padding: 1.5rem 2rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(var(--background-rgb), 0.85);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    background-color: rgba(var(--background-rgb), 0.85);
     border-bottom: 1px solid rgba(var(--primary-rgb), 0.08);
     transition: 
         background-color var(--transition-speed) ease,
         border-color var(--transition-speed) ease;
+    /* Performance improvements */
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: backdrop-filter, transform;
 }
 
 header nav {
@@ -179,12 +193,16 @@ section {
         background-color var(--transition-speed) ease,
         color var(--transition-speed) ease;
     will-change: opacity, transform;
-    scroll-margin-top: 2rem;
+    scroll-margin-top: var(--scroll-margin);
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform, opacity;
 }
 
 section#projects {
     margin: calc(var(--spacing-unit) * 2) 0;
-    scroll-margin-top: 2rem;
+    scroll-margin-top: var(--scroll-margin);
 }
 
 section.is-visible {
@@ -290,6 +308,10 @@ footer h2 {
 .scroll-container {
     position: relative;
     max-width: 100%;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform;
 }
 
 .company-grid {
@@ -307,6 +329,10 @@ footer h2 {
     -ms-overflow-style: none;
     width: 100%;
     justify-content: flex-start;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform;
 }
 
 .company-grid::-webkit-scrollbar {
@@ -325,6 +351,10 @@ footer h2 {
         opacity 0.5s ease-out,
         transform 0.6s ease-out,
         color var(--transition-speed) ease;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform, opacity;
 }
 
 .company:hover {
@@ -381,6 +411,10 @@ footer h2 {
         transform var(--transition-speed) ease,
         opacity var(--transition-speed) ease;
     will-change: opacity, transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform, opacity;
 }
 
 .expertise-item:hover {
@@ -474,6 +508,8 @@ footer.is-visible {
     :root {
         --spacing-unit: 3rem;
         --mobile-padding: 1.5rem;
+        --header-height: 4rem;
+        --scroll-margin: calc(var(--header-height) + 1rem);
     }
 
     main {
@@ -613,6 +649,11 @@ footer.is-visible {
 }
 
 @media (max-width: 480px) {
+    :root {
+        --header-height: 3.5rem;
+        --scroll-margin: calc(var(--header-height) + 1rem);
+    }
+
     header {
         padding: 1rem;
     }
@@ -693,7 +734,7 @@ section {
         background-color var(--transition-speed) ease,
         color var(--transition-speed) ease;
     will-change: opacity, transform;
-    scroll-margin-top: 2rem;
+    scroll-margin-top: var(--scroll-margin);
 }
 
 section.is-visible {
@@ -877,6 +918,7 @@ body[data-theme] footer {
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--scroll-margin);
 }
 
 .company-details ul {
@@ -1074,4 +1116,66 @@ html {
     font-weight: 600;
     position: relative;
     display: inline;
+}
+
+/* Performance optimizations */
+/* Optimize header blur */
+header {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: backdrop-filter;
+}
+
+/* Optimize scrolling containers */
+.scroll-container,
+.company-grid,
+main {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform;
+}
+
+/* Optimize animated elements */
+.company,
+.project,
+.expertise-item,
+section {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform, opacity;
+}
+
+/* Optimize noise texture */
+.noise {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform;
+}
+
+/* Force GPU acceleration for smoother scrolling */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    transform: translate3d(0, 0, 0);
+}
+
+/* Optimize scroll behavior */
+.company-grid {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    overscroll-behavior-x: contain;
+}
+
+/* Reduce paint operations */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+#intro, #approach, #current, #experience, #projects, #expertise {
+    scroll-margin-top: var(--scroll-margin);
 } 
