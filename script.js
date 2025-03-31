@@ -72,8 +72,16 @@ document.addEventListener('DOMContentLoaded', function() {
             const isAtEnd = Math.ceil(companyGrid.scrollLeft) >= maxScroll;
             scrollRight.style.display = isAtEnd ? 'none' : 'flex';
         };
+
+        const addBounceEffect = (element) => {
+            element.classList.add('bounce');
+            element.addEventListener('animationend', () => {
+                element.classList.remove('bounce');
+            }, { once: true });
+        };
         
         scrollLeft.addEventListener('click', () => {
+            addBounceEffect(scrollLeft);
             companyGrid.scrollBy({
                 left: -scrollAmount,
                 behavior: 'smooth'
@@ -81,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         scrollRight.addEventListener('click', () => {
+            addBounceEffect(scrollRight);
             companyGrid.scrollBy({
                 left: scrollAmount,
                 behavior: 'smooth'
@@ -128,7 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Rest of your DOMContentLoaded code...
-    const sections = document.querySelectorAll('section');
+    const sections = document.querySelectorAll('section, footer');
     
     const observerOptions = {
         root: null,
