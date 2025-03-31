@@ -14,6 +14,8 @@
     --scroll-margin: calc(var(--header-height) + 2rem);
     --highlight-color: rgba(255, 107, 0, 0.8);
     --highlight-color-secondary: rgba(255, 165, 0, 0.9);
+    --item-bg-light: rgba(0, 0, 0, 0.03);
+    --item-bg-dark: rgba(255, 255, 255, 0.05);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -36,6 +38,8 @@
     --background-alt: #1a1a1a;
     --accent-color: #e0e0e0;
     --primary-rgb: 255, 255, 255;
+    --item-bg-light: rgba(255, 255, 255, 0.05);
+    --item-bg-dark: rgba(255, 255, 255, 0.08);
 }
 
 body {
@@ -1469,6 +1473,11 @@ body {
     .current-role .company-details li {
         padding: 1.25rem;
         font-size: 0.95rem;
+        background-color: var(--item-bg-light);
+    }
+
+    [data-theme="dark"] .current-role .company-details li {
+        background-color: var(--item-bg-dark);
     }
     
     .current-role .company-details li::before {
