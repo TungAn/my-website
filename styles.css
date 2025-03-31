@@ -563,10 +563,12 @@ footer.is-visible {
         min-width: unset;
         padding: 1.5rem;
         margin: 0;
+        background-color: var(--background-alt);
+        border-radius: var(--border-radius);
     }
 
     .company img {
-        max-width: 60px;
+        /* max-width: 60px; */
         margin-bottom: 1.5rem;
     }
 
@@ -590,9 +592,9 @@ footer.is-visible {
     }
 
     .current-role {
-        padding: 0;
-        background: none;
-        border-radius: 0;
+        padding: 1.5rem;
+        background-color: var(--background-alt);
+        border-radius: var(--border-radius);
     }
 
     .current-role img {
@@ -637,7 +639,7 @@ footer.is-visible {
 
     .company {
         flex: 0 0 100%;
-        padding: 1rem;
+        padding: 1.5rem;
     }
 
     .company img {
@@ -659,6 +661,14 @@ footer.is-visible {
     .current-role img {
         height: 40px;
         width: auto;
+    }
+
+    .current-role {
+        padding: 1.5rem;
+    }
+
+    .project {
+        padding: 1.5rem;
     }
 }
 
@@ -708,13 +718,17 @@ section.is-visible {
 
 /* Project cards fade-in */
 .project {
+    cursor: pointer;
+    position: relative;
+    background: var(--background-alt);
+    border-radius: var(--border-radius);
+    padding: 2rem;
     opacity: 0;
     transform: translateY(20px);
     transition: 
-        opacity 0.5s ease-out,
-        transform 0.6s ease-out,
-        background-color var(--transition-speed) ease,
+        transform var(--transition-speed) ease,
         box-shadow var(--transition-speed) ease;
+    will-change: transform, box-shadow;
 }
 
 .is-visible .project {
@@ -756,25 +770,6 @@ body[data-theme] footer {
     transition-delay: 0s !important;
 }
 
-.project {
-    cursor: pointer;
-    position: relative;
-    background: var(--background-alt);
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: 
-        transform var(--transition-speed) ease,
-        box-shadow var(--transition-speed) ease;
-    will-change: transform, box-shadow;
-}
-
-.project.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 .project:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
@@ -788,7 +783,7 @@ body[data-theme] footer {
 }
 
 .project .project-header img {
-    height: 32px;
+    height: 48px;
     width: auto;
     transition: transform var(--transition-speed) ease;
 }
@@ -867,6 +862,16 @@ body[data-theme] footer {
         grid-template-columns: 1fr;
         gap: 2rem;
         margin-top: 3rem;
+    }
+
+    .project {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .project {
+        padding: 1.5rem;
     }
 }
 
@@ -1038,14 +1043,29 @@ html {
 
 @media (max-width: 768px) {
     .current-role {
-        padding: 0;
-        background: none;
-        border-radius: 0;
+        padding: 1.5rem;
+        background-color: var(--background-alt);
+        border-radius: var(--border-radius);
     }
 
     .current-role img {
         max-width: 60px;
         margin-bottom: 1.5rem;
+    }
+
+    .current-role-grid {
+        padding: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .current-role {
+        padding: 1.5rem;
+    }
+
+    .current-role img {
+        height: 40px;
+        width: auto;
     }
 }
 
