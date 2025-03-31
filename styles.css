@@ -560,7 +560,7 @@ footer.is-visible {
         left: auto;
         right: auto;
         margin: var(--spacing-unit) 0;
-        padding: 0 1rem;
+        /* padding: 0 1rem; */
         background: none;
     }
 
@@ -631,11 +631,21 @@ footer.is-visible {
 
     footer h2 {
         font-size: 1.75rem;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
     }
 
     h2 a {
         font-size: 1.5rem;
+    }
+
+    .intro-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin: 1rem 0;
+    }
+
+    .intro-text .highlight {
+        font-size: 1.1rem;
     }
 }
 
@@ -666,6 +676,12 @@ footer.is-visible {
     }
 
     .intro-text {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin: 0.75rem 0;
+    }
+
+    .intro-text .highlight {
         font-size: 1rem;
     }
 
