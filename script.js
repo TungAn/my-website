@@ -282,21 +282,34 @@ const resultsObserver = new IntersectionObserver((entries) => {
             const resultItems = entry.target.querySelectorAll('.result-item h3');
             resultItems.forEach(item => {
                 let finalValue;
-                if (item.textContent.includes('SGD')) {
-                    finalValue = 2500;
-                } else if (item.textContent.includes('K+')) {
-                    finalValue = 100;
-                } else if (item.textContent.includes('M+')) {
-                    const currentText = item.textContent;
-                    if (currentText.includes('230M+')) {
-                        finalValue = 230;
-                    } else {
-                        finalValue = 60;
-                    }
-                } else {
-                    finalValue = parseInt(item.textContent.replace(/[^\d]/g, ''));
-                }
+                const originalText = item.textContent;
+                
+                // Store the original text format
                 if (!item.dataset.animated) {
+                    item.dataset.originalText = originalText;
+                    
+                    // Set initial value to 0 with the appropriate suffix
+                    if (originalText.includes('SGD')) {
+                        item.textContent = '0+ SGD';
+                        finalValue = 2500;
+                    } else if (originalText.includes('K+')) {
+                        item.textContent = '0K+';
+                        finalValue = 100;
+                    } else if (originalText.includes('M+')) {
+                        item.textContent = '0M+';
+                        if (originalText.includes('230M+')) {
+                            finalValue = 230;
+                        } else {
+                            finalValue = 60;
+                        }
+                    } else if (originalText.includes('%')) {
+                        item.textContent = '0%';
+                        finalValue = parseInt(originalText.replace(/[^\d]/g, ''));
+                    } else {
+                        item.textContent = '0';
+                        finalValue = parseInt(originalText.replace(/[^\d]/g, ''));
+                    }
+                    
                     item.dataset.animated = true;
                     animateValue(item, 0, finalValue, 2000);
                 }
