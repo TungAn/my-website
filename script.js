@@ -251,6 +251,8 @@ function animateValue(element, start, end, duration) {
             element.textContent = Math.floor(currentValue) + '%';
         } else if (element.textContent.includes('SGD')) {
             element.textContent = Math.floor(currentValue).toLocaleString() + '+ SGD';
+        } else if (element.textContent.includes('M')) {
+            element.textContent = Math.floor(currentValue) + 'M+';
         } else {
             element.textContent = Math.floor(currentValue);
         }
@@ -277,7 +279,9 @@ const resultsObserver = new IntersectionObserver((entries) => {
             resultItems.forEach(item => {
                 let finalValue;
                 if (item.textContent.includes('SGD')) {
-                    finalValue = 2500; // Set specific value for SGD
+                    finalValue = 2500;
+                } else if (item.textContent.includes('M')) {
+                    finalValue = 60;
                 } else {
                     finalValue = parseInt(item.textContent.replace(/[^\d]/g, ''));
                 }
