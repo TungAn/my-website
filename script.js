@@ -45,7 +45,7 @@ const projects = [
         },
         title: 'Glints Chat-Driven Matching',
         subtitle: 'From Cold Application to Conversations',
-        description: 'Redefining job matching through chat-based interactions, improving matching efficiency by 64% across Southeast Asia.',
+        description: 'Redefining job matching through chat-based interactions, improving matching efficiency by 64%.',
         readTime: '8 min read',
         link: 'glints-case-study.html',
         expandable: true
