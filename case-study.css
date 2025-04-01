@@ -7,7 +7,7 @@
 
 /* Hero Section */
 .case-study-hero {
-    margin-bottom: var(--spacing-unit);
+    margin-bottom: 4rem;
 }
 
 .case-study-hero h1 {
@@ -39,7 +39,10 @@
 
 /* Content Section */
 .case-study-content {
-    margin-bottom: var(--spacing-unit);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    margin-bottom: 4rem;
 }
 
 .case-study-content h2 {
@@ -81,7 +84,7 @@
     background: var(--background-alt);
     padding: 2rem;
     border-radius: var(--border-radius);
-    margin: 2rem 0;
+    margin: 4rem 0;
 }
 
 .key-points ul {
@@ -141,7 +144,6 @@
 
 /* Quote Component */
 .quote {
-    margin: 2rem 0;
     padding: 2rem;
     background: var(--background-alt);
     border-radius: var(--border-radius);
@@ -166,7 +168,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
-    margin: 2rem 0;
+    margin: 4rem 0;
 }
 
 .result-item {
@@ -191,7 +193,7 @@
 /* Section Headers */
 .case-study-section h3 {
     font-size: 1.25rem;
-    margin: 2rem 0 1rem;
+    margin: 3rem 0 1.5rem;
     letter-spacing: -0.02em;
 }
 
@@ -199,7 +201,7 @@
 .quotes {
     display: grid;
     gap: 1.5rem;
-    margin: 2rem 0;
+    margin: 3rem 0;
 }
 
 /* Deliverables */
@@ -233,6 +235,18 @@
 
     .meta-grid {
         gap: 1.5rem;
+    }
+
+    .case-study-content,
+    .case-study-hero,
+    .case-study-section {
+        margin-bottom: 3rem;
+    }
+
+    .key-points,
+    .results-grid,
+    .quotes {
+        margin: 3rem 0;
     }
 
     .quote {
@@ -283,6 +297,19 @@
         gap: 1.5rem;
     }
 
+    .case-study-content,
+    .case-study-hero,
+    .case-study-section {
+        margin-bottom: 2.5rem;
+    }
+
+    .key-points,
+    .quote,
+    .results-grid,
+    .quotes {
+        margin: 2.5rem 0;
+    }
+
     .quote {
         padding: 1.25rem;
         margin: 1.5rem 0;
@@ -300,4 +327,16 @@
     .result-item {
         padding: 1.25rem;
     }
+}
+
+.case-study-header {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.case-study-section {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
 } 
