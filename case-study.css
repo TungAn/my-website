@@ -22,6 +22,7 @@
     font-size: 1.5rem;
     line-height: 1.5;
     color: var(--text-color-secondary);
+    opacity: 0.85;
     max-width: 42rem;
     margin-bottom: 2rem;
 }
@@ -61,7 +62,8 @@
 }
 
 .case-study-content p {
-    color: var(--secondary-color);
+    color: var(--text-color-secondary);
+    opacity: 0.85;
     margin-bottom: 1.5rem;
     font-size: 1.125rem;
     line-height: 1.7;
@@ -83,7 +85,8 @@
 
 .image-caption {
     text-align: center;
-    color: var(--secondary-color);
+    color: var(--text-color-secondary);
+    opacity: 0.75;
     font-size: 0.875rem;
     margin-top: 0.5rem;
 }
@@ -105,7 +108,8 @@
     position: relative;
     padding-left: 1.5rem;
     margin-bottom: 1rem;
-    color: var(--secondary-color);
+    color: var(--text-color-secondary);
+    opacity: 0.85;
 }
 
 .key-points li::before {
@@ -163,12 +167,14 @@
     font-size: 1.25rem;
     font-style: italic;
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    color: var(--text-color);
+    opacity: 0.9;
 }
 
 .quote cite {
     font-size: 0.875rem;
-    color: var(--secondary-color);
+    color: var(--text-color-secondary);
+    opacity: 0.75;
     font-style: normal;
 }
 
@@ -195,7 +201,8 @@
 
 .result-item p {
     font-size: 1rem;
-    color: var(--secondary-color);
+    color: var(--text-color-secondary);
+    opacity: 0.85;
     margin: 0;
 }
 
@@ -355,4 +362,12 @@
     max-width: 800px;
     margin: 0 auto 4rem;
     padding: 0 2rem;
+}
+
+.case-study-section p {
+    color: var(--text-color-secondary);
+    opacity: 0.85;
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.7;
 } 
