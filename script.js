@@ -1,59 +1,39 @@
-// Theme handling
+// Theme switching
 function initializeTheme() {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const savedTheme = localStorage.getItem('theme');
+    const themeToggle = document.getElementById('theme-toggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const storedTheme = localStorage.getItem('theme');
     
-    if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-    } else if (prefersDark) {
+    // Set initial theme based on stored preference or system preference
+    if (storedTheme) {
+        document.documentElement.setAttribute('data-theme', storedTheme);
+    } else if (prefersDark.matches) {
         document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
     }
-
-    // Update logo visibility based on current theme
-    updateLogoVisibility();
-}
-
-function updateLogoVisibility() {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
-                  (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
     
-    document.querySelectorAll('.logo-dark').forEach(logo => {
-        logo.style.display = isDark ? 'none' : 'block';
+    // Listen for system theme changes
+    prefersDark.addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+            document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        }
     });
     
-    document.querySelectorAll('.logo-light').forEach(logo => {
-        logo.style.display = isDark ? 'block' : 'none';
-    });
-}
-
-// Theme toggle
-function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    // Update logo visibility when theme changes
-    updateLogoVisibility();
-}
-
-// Add theme initialization to window load
-window.addEventListener('load', initializeTheme);
-
-// Add theme toggle listener
-const themeToggle = document.getElementById('theme-toggle');
-if (themeToggle) {
-    themeToggle.addEventListener('click', toggleTheme);
-}
-
-// Listen for system theme changes
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) {
-        document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-        updateLogoVisibility();
+    // Handle manual theme toggle
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
     }
-});
+}
+
+// Initialize theme immediately
+initializeTheme();
 
 // Project data
 const projects = [
@@ -349,7 +329,6 @@ const resultsObserver = new IntersectionObserver((entries) => {
 
 // Initialize everything on page load
 document.addEventListener('DOMContentLoaded', () => {
-    initializeTheme();
     populateProjects();
     initializeResultNumbers();
     
