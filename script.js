@@ -228,11 +228,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Initialize projects
-document.addEventListener('DOMContentLoaded', () => {
-    initializeTheme();
-    populateProjects();
-});
+// Initialize all result numbers to - on page load
+function initializeResultNumbers() {
+    const resultItems = document.querySelectorAll('.result-item h3');
+    resultItems.forEach(item => {
+        const originalText = item.textContent;
+        item.dataset.originalText = originalText;
+        
+        if (originalText.includes('SGD')) {
+            item.textContent = '- SGD';
+        } else if (originalText.includes('K+')) {
+            item.textContent = '-K+';
+        } else if (originalText.includes('M+')) {
+            item.textContent = '-M+';
+        } else if (originalText.includes('%')) {
+            item.textContent = '-%';
+        } else {
+            item.textContent = '-';
+        }
+    });
+}
 
 // Counting animation for result metrics
 function animateValue(element, start, end, duration) {
@@ -247,15 +262,16 @@ function animateValue(element, start, end, duration) {
         const easeOutQuad = progress * (2 - progress);
         
         let currentValue = start + (range * easeOutQuad);
+        const originalText = element.dataset.originalText;
         
         // Handle percentage and currency formats
-        if (element.textContent.includes('%')) {
+        if (originalText.includes('%')) {
             element.textContent = Math.floor(currentValue) + '%';
-        } else if (element.textContent.includes('SGD')) {
+        } else if (originalText.includes('SGD')) {
             element.textContent = Math.floor(currentValue).toLocaleString() + '+ SGD';
-        } else if (element.textContent.includes('K+')) {
+        } else if (originalText.includes('K+')) {
             element.textContent = Math.floor(currentValue) + 'K+';
-        } else if (element.textContent.includes('M+')) {
+        } else if (originalText.includes('M+')) {
             element.textContent = Math.floor(currentValue) + 'M+';
         } else {
             element.textContent = Math.floor(currentValue);
@@ -281,32 +297,23 @@ const resultsObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             const resultItems = entry.target.querySelectorAll('.result-item h3');
             resultItems.forEach(item => {
-                let finalValue;
-                const originalText = item.textContent;
-                
-                // Store the original text format
                 if (!item.dataset.animated) {
-                    item.dataset.originalText = originalText;
+                    let finalValue;
+                    const originalText = item.dataset.originalText;
                     
-                    // Set initial value to 0 with the appropriate suffix
                     if (originalText.includes('SGD')) {
-                        item.textContent = '0+ SGD';
                         finalValue = 2500;
                     } else if (originalText.includes('K+')) {
-                        item.textContent = '0K+';
                         finalValue = 100;
                     } else if (originalText.includes('M+')) {
-                        item.textContent = '0M+';
                         if (originalText.includes('230M+')) {
                             finalValue = 230;
                         } else {
                             finalValue = 60;
                         }
                     } else if (originalText.includes('%')) {
-                        item.textContent = '0%';
                         finalValue = parseInt(originalText.replace(/[^\d]/g, ''));
                     } else {
-                        item.textContent = '0';
                         finalValue = parseInt(originalText.replace(/[^\d]/g, ''));
                     }
                     
@@ -319,8 +326,12 @@ const resultsObserver = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Start observing the results grid
+// Initialize everything on page load
 document.addEventListener('DOMContentLoaded', () => {
+    initializeTheme();
+    populateProjects();
+    initializeResultNumbers();
+    
     const resultsGrid = document.querySelector('.results-grid');
     if (resultsGrid) {
         resultsObserver.observe(resultsGrid);
