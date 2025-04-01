@@ -74,7 +74,7 @@ const projects = [
         },
         title: 'PopJam',
         subtitle: 'Designing a Kid-Safe Social Network for the Asian Market',
-        description: 'Launched a social network for children in Vietnam, reaching 1M+ users in 8 months with a focus on safety and creativity.',
+        description: 'Launched a social network for children in Vietnam, reaching 100K+ users in first week with a focus on safety and creativity.',
         link: 'popjam-case-study.html',
         expandable: true
     }
@@ -253,7 +253,9 @@ function animateValue(element, start, end, duration) {
             element.textContent = Math.floor(currentValue) + '%';
         } else if (element.textContent.includes('SGD')) {
             element.textContent = Math.floor(currentValue).toLocaleString() + '+ SGD';
-        } else if (element.textContent.includes('M')) {
+        } else if (element.textContent.includes('K+')) {
+            element.textContent = Math.floor(currentValue) + 'K+';
+        } else if (element.textContent.includes('M+')) {
             element.textContent = Math.floor(currentValue) + 'M+';
         } else {
             element.textContent = Math.floor(currentValue);
@@ -282,12 +284,12 @@ const resultsObserver = new IntersectionObserver((entries) => {
                 let finalValue;
                 if (item.textContent.includes('SGD')) {
                     finalValue = 2500;
+                } else if (item.textContent.includes('K+')) {
+                    finalValue = 100;
                 } else if (item.textContent.includes('M+')) {
                     const currentText = item.textContent;
                     if (currentText.includes('230M+')) {
                         finalValue = 230;
-                    } else if (currentText.includes('1M+')) {
-                        finalValue = 1;
                     } else {
                         finalValue = 60;
                     }
