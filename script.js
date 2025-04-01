@@ -223,4 +223,71 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', () => {
     initializeTheme();
     populateProjects();
+});
+
+// Counting animation for result metrics
+function animateValue(element, start, end, duration) {
+    const range = end - start;
+    const startTime = performance.now();
+    
+    function updateNumber(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function for smooth animation
+        const easeOutQuad = progress * (2 - progress);
+        
+        let currentValue = start + (range * easeOutQuad);
+        
+        // Handle percentage and currency formats
+        if (element.textContent.includes('%')) {
+            element.textContent = Math.floor(currentValue) + '%';
+        } else if (element.textContent.includes('SGD')) {
+            element.textContent = Math.floor(currentValue).toLocaleString() + '+ SGD';
+        } else {
+            element.textContent = Math.floor(currentValue);
+        }
+        
+        if (progress < 1) {
+            requestAnimationFrame(updateNumber);
+        }
+    }
+    
+    requestAnimationFrame(updateNumber);
+}
+
+// Set up Intersection Observer for results section
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5
+};
+
+const resultsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const resultItems = entry.target.querySelectorAll('.result-item h3');
+            resultItems.forEach(item => {
+                let finalValue;
+                if (item.textContent.includes('SGD')) {
+                    finalValue = 2500; // Set specific value for SGD
+                } else {
+                    finalValue = parseInt(item.textContent.replace(/[^\d]/g, ''));
+                }
+                if (!item.dataset.animated) {
+                    item.dataset.animated = true;
+                    animateValue(item, 0, finalValue, 2000);
+                }
+            });
+            resultsObserver.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Start observing the results grid
+document.addEventListener('DOMContentLoaded', () => {
+    const resultsGrid = document.querySelector('.results-grid');
+    if (resultsGrid) {
+        resultsObserver.observe(resultsGrid);
+    }
 }); 
