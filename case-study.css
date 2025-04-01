@@ -24,8 +24,9 @@
 .case-study-hero h1 {
     font-size: 3rem;
     line-height: 1.2;
-    letter-spacing: -0.03em;
-    margin-bottom: 3rem;
+    margin-bottom: 0.75rem;
+    max-width: 800px;
+    letter-spacing: -0.02em;
     color: var(--primary-color);
 }
 
@@ -34,6 +35,13 @@
     line-height: 1.5;
     color: var(--secondary-color);
     opacity: 0.85;
+    margin-bottom: 2rem;
+}
+
+.case-study-hero .read-time {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    margin-top: 0;
     margin-bottom: 2rem;
 }
 
