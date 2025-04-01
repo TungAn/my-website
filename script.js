@@ -282,8 +282,15 @@ const resultsObserver = new IntersectionObserver((entries) => {
                 let finalValue;
                 if (item.textContent.includes('SGD')) {
                     finalValue = 2500;
-                } else if (item.textContent.includes('M')) {
-                    finalValue = 60;
+                } else if (item.textContent.includes('M+')) {
+                    const currentText = item.textContent;
+                    if (currentText.includes('230M+')) {
+                        finalValue = 230;
+                    } else if (currentText.includes('1M+')) {
+                        finalValue = 1;
+                    } else {
+                        finalValue = 60;
+                    }
                 } else {
                     finalValue = parseInt(item.textContent.replace(/[^\d]/g, ''));
                 }
