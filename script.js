@@ -1,44 +1,59 @@
-// Theme switching
+// Theme handling
 function initializeTheme() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    const storedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('theme');
     
-    // Set initial theme based on stored preference, system preference, or default to dark
-    if (storedTheme) {
-        document.documentElement.setAttribute('data-theme', storedTheme);
-    } else if (prefersDark.matches !== null) {
-        // System preference detected
-        if (prefersDark.matches) {
-            document.documentElement.removeAttribute('data-theme');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-        }
-    } else {
-        // System preference not detected, default to dark
+    if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    } else if (prefersDark) {
         document.documentElement.setAttribute('data-theme', 'dark');
     }
+
+    // Update logo visibility based on current theme
+    updateLogoVisibility();
+}
+
+function updateLogoVisibility() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
+                  (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
     
-    // Listen for system theme changes
-    prefersDark.addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
-            if (e.matches) {
-                document.documentElement.removeAttribute('data-theme');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-            }
-        }
+    document.querySelectorAll('.logo-dark').forEach(logo => {
+        logo.style.display = isDark ? 'none' : 'block';
     });
     
-    // Handle manual theme toggle
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
+    document.querySelectorAll('.logo-light').forEach(logo => {
+        logo.style.display = isDark ? 'block' : 'none';
     });
 }
+
+// Theme toggle
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // Update logo visibility when theme changes
+    updateLogoVisibility();
+}
+
+// Add theme initialization to window load
+window.addEventListener('load', initializeTheme);
+
+// Add theme toggle listener
+const themeToggle = document.getElementById('theme-toggle');
+if (themeToggle) {
+    themeToggle.addEventListener('click', toggleTheme);
+}
+
+// Listen for system theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+        document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        updateLogoVisibility();
+    }
+});
 
 // Project data
 const projects = [
