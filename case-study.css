@@ -7,14 +7,25 @@
 
 /* Hero Section */
 .case-study-hero {
-    margin-bottom: 4rem;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    padding: 0;
+}
+
+.hero-subheading {
+    font-size: 1.25rem;
+    line-height: 1.4;
+    color: var(--text-color-secondary);
+    opacity: 0.85;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
 }
 
 .case-study-hero h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     line-height: 1.2;
     letter-spacing: -0.03em;
-    margin-bottom: 1.5rem;
+    margin-bottom: 3rem;
     color: var(--text-color);
 }
 
@@ -23,7 +34,7 @@
     line-height: 1.5;
     color: var(--text-color-secondary);
     opacity: 0.85;
-    max-width: 42rem;
+    /* max-width: 42rem; */
     margin-bottom: 2rem;
 }
 
@@ -181,22 +192,22 @@
 /* Results Grid */
 .results-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     margin: 4rem 0;
 }
 
 .result-item {
-    padding: 1.5rem;
+    padding: 2rem;
     background: var(--background-alt);
     border-radius: var(--border-radius);
     text-align: center;
 }
 
 .result-item h3 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: var(--highlight-color);
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .result-item p {
@@ -204,6 +215,7 @@
     color: var(--text-color-secondary);
     opacity: 0.85;
     margin: 0;
+    line-height: 1.5;
 }
 
 /* Section Headers */
@@ -241,12 +253,13 @@
         padding: 4rem 2rem;
     }
 
-    .case-study-hero h1 {
-        font-size: 2rem;
+    .hero-subheading {
+        font-size: 1.125rem;
     }
 
-    .case-study-hero p {
-        font-size: 1.25rem;
+    .case-study-hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 2.5rem;
     }
 
     .case-study-content h2 {
@@ -281,8 +294,12 @@
         gap: 1.5rem;
     }
     
+    .result-item {
+        padding: 1.5rem;
+    }
+    
     .result-item h3 {
-        font-size: 1.75rem;
+        font-size: 2rem;
     }
 
     .quotes {
@@ -299,12 +316,13 @@
         padding: 3rem 1.5rem;
     }
 
-    .case-study-hero h1 {
-        font-size: 1.75rem;
+    .hero-subheading {
+        font-size: 1rem;
     }
 
-    .case-study-hero p {
-        font-size: 1.125rem;
+    .case-study-hero h1 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
     }
 
     .case-study-content p {
@@ -349,6 +367,11 @@
     
     .result-item {
         padding: 1.25rem;
+    }
+    
+    .result-item h3 {
+        font-size: 1.75rem;
+        margin-bottom: 0.75rem;
     }
 }
 
