@@ -9,16 +9,17 @@
 .case-study-hero {
     max-width: 800px;
     margin: 0 auto 4rem;
-    padding: 0;
+    padding: 0 2rem;
 }
 
 .hero-subheading {
-    font-size: 1.25rem;
-    line-height: 1.4;
+    font-size: 1.25rem !important;
+    line-height: 1.4 !important;
     color: var(--secondary-color);
     opacity: 0.85;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.75rem !important;
     font-weight: 500;
+    text-transform: uppercase;
 }
 
 .case-study-hero h1 {
@@ -40,14 +41,16 @@
     color: var(--secondary-color);
     font-size: 1rem;
     margin-top: 0.75rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .meta-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
-    margin-bottom: var(--spacing-unit);
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(var(--primary-rgb), 0.1);
 }
 
 .meta-item h3 {
@@ -61,13 +64,14 @@
 .meta-item p {
     font-size: 1rem;
     color: var(--primary-color);
+    margin: 0;
 }
 
 /* Content Section */
 .case-study-content {
     max-width: 800px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0;
     margin-bottom: 4rem;
 }
 
