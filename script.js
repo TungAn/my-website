@@ -50,7 +50,7 @@ const projects = [
         },
         title: 'Glints Chat-Driven Matching',
         subtitle: 'From Cold Application to Conversations',
-        description: 'Redefining job matching through chat-based interactions, improving matching efficiency by 64% across Southeast Asia.',
+        description: 'Redefining job matching through chat-based interactions, improving matching efficiency by 64%.',
         link: 'glints-case-study.html',
         expandable: true
     },
@@ -74,7 +74,7 @@ const projects = [
         },
         title: 'PopJam',
         subtitle: 'Designing a Kid-Safe Social Network for the Asian Market',
-        description: 'Launched a social network for children in Vietnam, achieving over 1 million users in 8 months with a focus on safety and creativity.',
+        description: 'Achieving over 1 million users in 8 months with a focus on safety and creativity.',
         link: 'popjam-case-study.html',
         expandable: true
     }
