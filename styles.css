@@ -386,7 +386,7 @@ footer h2 {
 .company {
     flex: 0 0 400px;
     min-width: 400px;
-    padding: 2rem;
+    /* padding: 2rem; */
     transform: translateY(0);
     transition: transform var(--transition-speed) ease;
     opacity: 0;
@@ -801,19 +801,71 @@ section.is-visible {
 
 /* Project cards fade-in */
 .project {
-    cursor: pointer;
     position: relative;
-    background: var(--background-alt);
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    opacity: 0;
-    transform: translateY(20px);
-    will-change: transform, box-shadow;
+    transition: transform var(--transition-speed) ease;
 }
 
-.is-visible .project {
-    opacity: 1;
-    transform: translateY(0);
+.project-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 2rem;
+    background: var(--background-alt);
+    border-radius: var(--border-radius);
+    transition: 
+        background-color var(--transition-speed) ease,
+        transform var(--transition-speed) ease;
+}
+
+.project:hover .project-link {
+    transform: translateY(-4px);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.project .year {
+    font-size: 0.875rem;
+    color: var(--secondary-color);
+}
+
+.project h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.project p {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.project .description {
+    margin-bottom: 1.5rem;
+}
+
+.project .expand {
+    color: var(--highlight-color);
+    font-weight: 500;
+    display: inline-block;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.project:hover .expand {
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .project-link {
+        padding: 1.5rem;
+    }
+    
+    .project:hover .project-link {
+        transform: none;
+    }
 }
 
 /* Expertise items fade-in */

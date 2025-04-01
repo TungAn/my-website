@@ -51,6 +51,7 @@ const projects = [
         title: 'Glints',
         subtitle: 'From Cold Application to Conversations',
         description: 'How a Chat-Driven Approach Increased Glints Matching Efficiency',
+        link: '/glints-case-study.html',
         expandable: true
     },
     {
@@ -85,7 +86,11 @@ function populateProjects() {
         const projectElement = document.createElement('div');
         projectElement.className = 'company project';
         
-        projectElement.innerHTML = `
+        const projectLink = document.createElement('a');
+        projectLink.href = project.link || '#';
+        projectLink.className = 'project-link';
+        
+        projectLink.innerHTML = `
             <div class="project-header">
                 <span class="year">${project.year}</span>
                 <div class="logo-container">
@@ -101,6 +106,7 @@ function populateProjects() {
             </div>
         `;
         
+        projectElement.appendChild(projectLink);
         projectGrid.appendChild(projectElement);
     });
 }
