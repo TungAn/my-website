@@ -554,7 +554,7 @@ footer.is-visible {
     main {
         display: flex;
         flex-direction: column;
-        padding: 0 var(--mobile-padding);
+        padding: 0 2rem;
         padding-top: 4rem;
     }
 
@@ -692,8 +692,12 @@ footer.is-visible {
         --scroll-margin: calc(var(--header-height) + 1rem);
     }
 
+    main {
+        padding: 0 1.5rem;
+    }
+
     header {
-        padding: 1rem;
+        padding: 1rem 2rem;
     }
 
     header nav {
