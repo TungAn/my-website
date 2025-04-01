@@ -74,7 +74,7 @@ const projects = [
         },
         title: 'PopJam',
         subtitle: 'Designing a Kid-Safe Social Network for the Asian Market',
-        description: 'Launched a social network for children in Vietnam, reaching 100K+ users in first week with a focus on safety and creativity.',
+        description: 'Launched a social network for children in Vietnam, achieving over 1 million users in 8 months with a focus on safety and creativity.',
         link: 'popjam-case-study.html',
         expandable: true
     }
