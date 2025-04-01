@@ -50,7 +50,8 @@ const projects = [
         },
         title: 'Glints Chat-Driven Matching',
         subtitle: 'From Cold Application to Conversations',
-        description: 'Redefining job matching through chat-based interactions, improving matching efficiency by 64%.',
+        description: 'Redefining job matching through chat-based interactions, improving matching efficiency by 64% across Southeast Asia.',
+        readTime: '8 min read',
         link: 'glints-case-study.html',
         expandable: true
     },
@@ -63,6 +64,7 @@ const projects = [
         title: 'Lazada Payment Revamp',
         subtitle: 'Transforming Digital Payments',
         description: 'Increasing wallet usage by 17% and reducing cash-on-delivery by 14% across Southeast Asia.',
+        readTime: '10 min read',
         link: 'lazada-case-study.html',
         expandable: true
     },
@@ -74,7 +76,8 @@ const projects = [
         },
         title: 'PopJam',
         subtitle: 'Designing a Kid-Safe Social Network for the Asian Market',
-        description: 'Achieving over 1 million users in 8 months with a focus on safety and creativity.',
+        description: 'Launched a social network for children in Vietnam, achieving over 1 million users in 8 months with a focus on safety and creativity.',
+        readTime: '7 min read',
         link: 'popjam-case-study.html',
         expandable: true
     }
@@ -111,7 +114,10 @@ function populateProjects() {
                 <h3>${project.title}</h3>
                 ${project.subtitle ? `<p>${project.subtitle}</p>` : ''}
                 ${project.description ? `<p class="description">${project.description}</p>` : ''}
-                ${project.expandable ? '<span class="expand">Read case study →</span>' : ''}
+                <div class="project-footer">
+                    ${project.readTime ? `<span class="read-time">${project.readTime}</span>` : ''}
+                    ${project.expandable ? '<span class="expand">Read case study →</span>' : ''}
+                </div>
             </div>
         `;
         

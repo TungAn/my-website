@@ -305,12 +305,13 @@
     }
 
     .hero-subheading {
-        font-size: 1.125rem;
+        font-size: 1.125rem !important;
+        margin-bottom: 1rem !important;
     }
 
     .case-study-hero h1 {
         font-size: 2.5rem;
-        margin-bottom: 2.5rem;
+        margin-bottom: 2rem;
     }
 
     .case-study-content h2 {
@@ -376,16 +377,16 @@
 
 @media (max-width: 480px) {
     .case-study {
-        padding: 3rem 1.5rem;
+        padding: 3rem 0rem;
     }
 
     .hero-subheading {
-        font-size: 1rem;
+        font-size: 1rem !important;
     }
 
     .case-study-hero h1 {
         font-size: 2rem;
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
 
     .case-study-content p {

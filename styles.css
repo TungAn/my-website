@@ -45,7 +45,7 @@
 body {
     background-color: var(--background-color);
     color: var(--primary-color);
-    font-family: -apple-system, "SF Pro Display", BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: 'Inter', sans-serif;
     transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -701,7 +701,7 @@ footer.is-visible {
     }
 
     section {
-        padding: 0 1rem;
+        padding: 0 0.5rem;
     }
 
     h2 {
@@ -858,7 +858,7 @@ section.is-visible {
 
 @media (max-width: 768px) {
     .project-link {
-        padding: 1.5rem;
+        padding: 0rem;
     }
     
     .project:hover .project-link {
@@ -1676,15 +1676,8 @@ body {
 
 @media (max-width: 768px) {
     .project-footer {
-        flex-direction: row;
-        align-items: center;
         gap: 0.5rem;
-        text-align: center;
     }
-
-    /* .read-time {
-        margin-bottom: 0.25rem;
-    } */
 
     .project .expand {
         margin-top: 0;
