@@ -43,15 +43,15 @@ function initializeTheme() {
 // Project data
 const projects = [
     {
-        year: '2025',
+        year: 'Now',
         logo: {
             dark: 'assets/glints-logo.svg',
             light: 'assets/glints-logo-light.svg'
         },
-        title: 'Glints',
+        title: 'Glints Chat-Driven Matching',
         subtitle: 'From Cold Application to Conversations',
-        description: 'How a Chat-Driven Approach Increased Glints Matching Efficiency',
-        link: '/glints-case-study.html',
+        description: 'Redefining job matching through chat-based interactions, improving matching efficiency by 64% across Southeast Asia.',
+        link: 'glints-case-study.html',
         expandable: true
     },
     {
@@ -60,9 +60,10 @@ const projects = [
             dark: 'assets/laz-logo.svg',
             light: 'assets/laz-logo-light.svg'
         },
-        title: 'Lazada',
-        subtitle: 'E-commerce Payment Revamp',
-        description: 'Transforming Digital Payments Across Southeast Asia',
+        title: 'Lazada Payment Revamp',
+        subtitle: 'Transforming Digital Payments',
+        description: 'Increasing wallet usage by 17% and reducing cash-on-delivery by 14% across Southeast Asia.',
+        link: 'lazada-case-study.html',
         expandable: true
     },
     {
@@ -90,17 +91,23 @@ function populateProjects() {
         projectLink.href = project.link || '#';
         projectLink.className = 'project-link';
         
+        let headerHTML = '';
+        if (project.year && project.logo) {
+            headerHTML = `
+                <div class="project-header">
+                    <span class="year">${project.year}</span>
+                    <div class="logo-container">
+                        <img class="logo-dark" src="${project.logo.dark}" alt="${project.title} Logo">
+                        <img class="logo-light" src="${project.logo.light}" alt="${project.title} Logo Light">
+                    </div>
+                </div>`;
+        }
+        
         projectLink.innerHTML = `
-            <div class="project-header">
-                <span class="year">${project.year}</span>
-                <div class="logo-container">
-                    <img class="logo-dark" src="${project.logo.dark}" alt="${project.title} Logo">
-                    <img class="logo-light" src="${project.logo.light}" alt="${project.title} Logo Light">
-                </div>
-            </div>
+            ${headerHTML}
             <div class="project-details">
                 <h3>${project.title}</h3>
-                <p>${project.subtitle}</p>
+                ${project.subtitle ? `<p>${project.subtitle}</p>` : ''}
                 ${project.description ? `<p class="description">${project.description}</p>` : ''}
                 ${project.expandable ? '<span class="expand">Read case study →</span>' : ''}
             </div>

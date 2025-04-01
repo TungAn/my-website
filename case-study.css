@@ -15,7 +15,7 @@
 .hero-subheading {
     font-size: 1.25rem;
     line-height: 1.4;
-    color: var(--text-color-secondary);
+    color: var(--secondary-color);
     opacity: 0.85;
     margin-bottom: 0.75rem;
     font-weight: 500;
@@ -26,15 +26,14 @@
     line-height: 1.2;
     letter-spacing: -0.03em;
     margin-bottom: 3rem;
-    color: var(--text-color);
+    color: var(--primary-color);
 }
 
 .case-study-hero p {
     font-size: 1.5rem;
     line-height: 1.5;
-    color: var(--text-color-secondary);
+    color: var(--secondary-color);
     opacity: 0.85;
-    /* max-width: 42rem; */
     margin-bottom: 2rem;
 }
 
@@ -73,7 +72,7 @@
 }
 
 .case-study-content p {
-    color: var(--text-color-secondary);
+    color: var(--secondary-color);
     opacity: 0.85;
     margin-bottom: 1.5rem;
     font-size: 1.125rem;
@@ -96,7 +95,7 @@
 
 .image-caption {
     text-align: center;
-    color: var(--text-color-secondary);
+    color: var(--secondary-color);
     opacity: 0.75;
     font-size: 0.875rem;
     margin-top: 0.5rem;
@@ -119,7 +118,7 @@
     position: relative;
     padding-left: 1.5rem;
     margin-bottom: 1rem;
-    color: var(--text-color-secondary);
+    color: var(--secondary-color);
     opacity: 0.85;
 }
 
@@ -141,6 +140,7 @@
     margin-top: var(--spacing-unit);
     padding-top: 2rem;
     border-top: 1px solid rgba(var(--primary-rgb), 0.1);
+    gap: 2rem;
 }
 
 .nav-link {
@@ -152,6 +152,17 @@
     transition: opacity var(--transition-speed) ease;
 }
 
+.nav-link:last-child {
+    margin-left: auto;
+    text-align: right;
+    align-items: flex-end;
+}
+
+.nav-link:first-child:not(:last-child) {
+    text-align: left;
+    align-items: flex-start;
+}
+
 .nav-link:hover {
     opacity: 0.8;
 }
@@ -159,6 +170,7 @@
 .nav-label {
     font-size: 0.875rem;
     color: var(--secondary-color);
+    opacity: 0.85;
 }
 
 .nav-title {
@@ -178,13 +190,13 @@
     font-size: 1.25rem;
     font-style: italic;
     margin-bottom: 1rem;
-    color: var(--text-color);
+    color: var(--primary-color);
     opacity: 0.9;
 }
 
 .quote cite {
     font-size: 0.875rem;
-    color: var(--text-color-secondary);
+    color: var(--secondary-color);
     opacity: 0.75;
     font-style: normal;
 }
@@ -205,14 +217,15 @@
 }
 
 .result-item h3 {
-    font-size: 2.5rem;
+    font-size: 2.5rem !important;
+    font-weight: 400;
     color: var(--highlight-color);
     margin-bottom: 1rem;
 }
 
 .result-item p {
     font-size: 1rem;
-    color: var(--text-color-secondary);
+    color: var(--secondary-color);
     opacity: 0.85;
     margin: 0;
     line-height: 1.5;
@@ -309,6 +322,18 @@
     .case-study-image + .case-study-image {
         margin-top: 2rem;
     }
+
+    .case-study-nav {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .nav-link,
+    .nav-link:last-child {
+        align-items: flex-start;
+        text-align: left;
+        margin-left: 0;
+    }
 }
 
 @media (max-width: 480px) {
@@ -388,7 +413,7 @@
 }
 
 .case-study-section p {
-    color: var(--text-color-secondary);
+    color: var(--secondary-color);
     opacity: 0.85;
     margin-bottom: 1.5rem;
     font-size: 1.125rem;
