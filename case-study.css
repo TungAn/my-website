@@ -125,11 +125,13 @@
     padding: 2rem;
     border-radius: var(--border-radius);
     margin: 3rem 0;
+    transition: background-color 0.3s ease;
 }
 
 .key-points ul {
     list-style: none;
     padding: 0;
+    transition: color 0.3s ease;
 }
 
 .key-points li {
@@ -138,6 +140,7 @@
     margin-bottom: 1rem;
     color: var(--secondary-color);
     opacity: 0.85;
+    transition: color 0.3s ease;
 }
 
 .key-points li::before {
@@ -149,6 +152,7 @@
     height: 6px;
     border-radius: 50%;
     background: var(--highlight-color);
+    transition: background-color 0.3s ease;
 }
 
 /* Navigation */
