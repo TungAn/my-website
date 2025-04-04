@@ -124,7 +124,7 @@
     background: var(--background-alt);
     padding: 2rem;
     border-radius: var(--border-radius);
-    margin: 4rem 0;
+    margin: 3rem 0;
 }
 
 .key-points ul {
@@ -469,4 +469,52 @@
     margin-bottom: 1.5rem;
     font-size: 1rem;
     line-height: 1.7;
+}
+
+.insights-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.insight-card {
+    background: var(--surface-2);
+    border-radius: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.insight-card:hover {
+    transform: none;
+}
+
+.insight-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: var(--surface-1);
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.insight-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--highlight-color);
+}
+
+.insight-card p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    padding-top: 0.25rem;
+}
+
+@media (min-width: 768px) {
+    .insights-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 } 
