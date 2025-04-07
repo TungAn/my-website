@@ -443,24 +443,43 @@ footer h2 {
 }
 
 .expertise-item {
-    padding: 0;
+    padding: 2rem;
     opacity: 0;
     transform: translateY(20px);
     transition: 
         transform var(--transition-speed) ease,
-        opacity var(--transition-speed) ease;
+        opacity var(--transition-speed) ease,
+        background-color var(--transition-speed) ease;
     will-change: opacity, transform;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     perspective: 1000px;
-    will-change: transform, opacity;
+    background: var(--background-alt);
+    border-radius: var(--border-radius);
 }
 
 .expertise-item:hover {
     transform: translateY(-5px);
 }
 
-.expertise-item h3 {
+.expertise-icon {
+    margin-bottom: 1.5rem;
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    background: var(--background-color);
+    border-radius: 16px;
+    transition: transform var(--transition-speed) ease;
+}
+
+.expertise-item:hover .expertise-icon {
+    transform: scale(1.05);
+}
+
+.expertise-content h3 {
     font-size: 1.25rem;
     margin-bottom: 1rem;
     font-weight: 600;
@@ -468,7 +487,7 @@ footer h2 {
     letter-spacing: -0.02em;
 }
 
-.expertise-item p {
+.expertise-content p {
     font-size: 1rem;
     color: var(--secondary-color);
     line-height: 1.7;
@@ -683,6 +702,28 @@ footer.is-visible {
 
     .intro-text .highlight {
         font-size: 1.1rem;
+    }
+
+    .expertise-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .expertise-item {
+        padding: 1.5rem;
+    }
+
+    .expertise-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        margin-bottom: 1.25rem;
+    }
+
+    .expertise-icon svg {
+        width: 24px;
+        height: 24px;
     }
 }
 
