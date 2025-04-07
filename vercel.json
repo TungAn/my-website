@@ -8,6 +8,18 @@
   ],
   "routes": [
     {
+      "src": "/glints-case-study",
+      "dest": "/glints-case-study.html"
+    },
+    {
+      "src": "/lazada-case-study",
+      "dest": "/lazada-case-study.html"
+    },
+    {
+      "src": "/popjam-case-study",
+      "dest": "/popjam-case-study.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }

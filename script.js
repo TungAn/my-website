@@ -47,7 +47,7 @@ const projects = [
         subtitle: 'From Cold Application to Conversations',
         description: 'Redefining job matching through chat-based interactions, improving matching efficiency by 64%.',
         readTime: '8 min read',
-        link: 'glints-case-study.html',
+        link: 'glints-case-study',
         expandable: true
     },
     {
@@ -60,7 +60,7 @@ const projects = [
         subtitle: 'Transforming Digital Payments',
         description: 'Increasing wallet usage by 17% and reducing cash-on-delivery by 14% across Southeast Asia.',
         readTime: '10 min read',
-        link: 'lazada-case-study.html',
+        link: 'lazada-case-study',
         expandable: true
     },
     {
@@ -73,7 +73,7 @@ const projects = [
         subtitle: 'Designing a Kid-Safe Social Network for the Asian Market',
         description: 'Launched a social network for children in Vietnam, achieving over 1 million users in 8 months with a focus on safety and creativity.',
         readTime: '7 min read',
-        link: 'popjam-case-study.html',
+        link: 'popjam-case-study',
         expandable: true
     }
 ];
