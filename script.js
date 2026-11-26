@@ -440,3 +440,45 @@ function initCardGlow() {
 }
 
 document.addEventListener('DOMContentLoaded', initCardGlow);
+
+// Header hides after a short scroll down and slides back when scrolling up or near the top
+function initHeaderAutoHide() {
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    const TOP_ZONE = 80;     // always show within this distance of the top
+    const HIDE_AFTER = 240;  // scroll this far down in one go before hiding
+    const SHOW_AFTER = 8;    // a small scroll up brings it back
+    let lastY = window.scrollY;
+    let anchorY = lastY;     // where the current scroll direction started
+    let goingDown = true;
+    let ticking = false;
+
+    const update = () => {
+        ticking = false;
+        const y = window.scrollY;
+        const down = y > lastY;
+        if (y !== lastY && down !== goingDown) {
+            goingDown = down;
+            anchorY = lastY;
+        }
+        lastY = y;
+
+        if (y <= TOP_ZONE) {
+            header.classList.remove('is-hidden');
+        } else if (goingDown && y - anchorY > HIDE_AFTER) {
+            header.classList.add('is-hidden');
+        } else if (!goingDown && anchorY - y > SHOW_AFTER) {
+            header.classList.remove('is-hidden');
+        }
+    };
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(update);
+        }
+    }, { passive: true });
+}
+
+document.addEventListener('DOMContentLoaded', initHeaderAutoHide);

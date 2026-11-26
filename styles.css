@@ -2453,3 +2453,75 @@ header {
         scrollbar-color: var(--scroll-thumb) transparent;
     }
 }
+
+/* ===== Header hides on scroll down, slides back on scroll up ===== */
+/* Leaving uses ease-in cubic (speeds up as it goes), returning uses ease-out cubic
+   (fast start, settles softly), so it moves like a real object */
+header {
+    transition:
+        transform 0.5s cubic-bezier(0.33, 1, 0.68, 1),
+        background-color var(--transition-speed) ease,
+        border-color var(--transition-speed) ease;
+    will-change: transform;
+}
+
+header.is-hidden {
+    /* Move past its own height, its top offset and its shadow */
+    transform: translate3d(0, calc(-100% - 3rem), 0);
+    transition:
+        transform 0.5s cubic-bezier(0.32, 0, 0.67, 0) 0.35s,
+        background-color var(--transition-speed) ease,
+        border-color var(--transition-speed) ease;
+}
+
+/* Keyboard users tabbing into the menu always see it */
+header.is-hidden:focus-within {
+    transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    header,
+    header.is-hidden {
+        transition: none;
+    }
+}
+
+/* ===== Mobile fixes ===== */
+@media (max-width: 768px) {
+    /* Project cards also carry .company, whose old mobile rule added a second
+       dark box and padding around the glass card. The glass card is the card. */
+    .project-grid > .project,
+    [data-theme='dark'] .project-grid > .project {
+        padding: 0;
+        background: none;
+    }
+
+    .project-link {
+        padding: 1.5rem;
+    }
+
+    /* Same for Current Role: drop the outer dark box so the glass cards get the full width */
+    .current-role,
+    [data-theme='dark'] .current-role {
+        padding: 0;
+        background: none;
+    }
+}
+
+/* Header slides down on page load (ease-out cubic, settles softly).
+   fill-mode "backwards" only: it starts hidden during the delay, and once done the
+   normal transform takes over so the scroll hide/show still works. */
+@keyframes header-enter {
+    from { transform: translate3d(0, calc(-100% - 3rem), 0); }
+    to   { transform: translate3d(0, 0, 0); }
+}
+
+header {
+    animation: header-enter 0.7s cubic-bezier(0.33, 1, 0.68, 1) 0.1s backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    header {
+        animation: none;
+    }
+}

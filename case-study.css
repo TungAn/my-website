@@ -608,3 +608,27 @@
     z-index: 1;
     background: none;
 }
+
+/* Result cards: drop the global heading margins so the number and its label sit together */
+.result-item {
+    padding: 1.75rem 1.5rem;
+}
+
+.result-item h3 {
+    margin: 0 0 0.5rem;
+    line-height: 1.2;
+}
+
+.result-item p {
+    margin: 0;
+}
+
+/* Image captions: small and tight under the image, inside the glass frame.
+   Extra specificity beats the general .case-study paragraph size. */
+.case-study .case-study-image p.image-caption {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0.75rem 1rem 0.875rem;
+    text-align: center;
+}
