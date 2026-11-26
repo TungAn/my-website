@@ -44,8 +44,7 @@ const projects = [
             light: 'assets/glints-logo-light.svg'
         },
         title: 'Glints Chat to Apply',
-        subtitle: 'From Cold Application to Conversations',
-        description: 'Let candidates chat with employers instead of only sending a CV. In the MVP, applications processed within a day went from 9.7% to 18.4%.',
+        description: 'How letting candidates chat with employers, not only send a CV, got applications processed faster.',
         readTime: '8 min read',
         link: 'glints-case-study',
         expandable: true
@@ -57,7 +56,6 @@ const projects = [
             light: 'assets/laz-logo-light.svg'
         },
         title: 'Lazada Payment Revamp',
-        subtitle: 'Transforming Digital Payments',
         description: 'Increasing wallet usage by 17% and reducing cash-on-delivery by 14% across Southeast Asia.',
         readTime: '10 min read',
         link: 'lazada-case-study',
@@ -70,7 +68,6 @@ const projects = [
             light: 'assets/popjam-logo-light.svg'
         },
         title: 'PopJam',
-        subtitle: 'Designing a Kid-Safe Social Network for the Asian Market',
         description: 'Launched a social network for children in Vietnam, achieving over 1 million users in 8 months with a focus on safety and creativity.',
         readTime: '7 min read',
         link: 'popjam-case-study',
