@@ -2277,7 +2277,7 @@ header {
 .current-role .company-details li:nth-child(2)::before,
 [data-theme='dark'] .current-role .company-details li:nth-child(2)::before {
     content: "";
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgb%28255%2C107%2C0%29' stroke-opacity='0.85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 7l-8.5 8.5-5-5L2 17'/%3E%3Cpath d='M16 7h6v6'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgb%28255%2C107%2C0%29' stroke-opacity='0.85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='20' height='14' x='2' y='5' rx='2'/%3E%3Cpath d='M2 10h20'/%3E%3C/svg%3E");
 }
 
 .current-role .company-details li:nth-child(3)::before,
@@ -2295,7 +2295,7 @@ header {
 .current-role .company-details li:nth-child(5)::before,
 [data-theme='dark'] .current-role .company-details li:nth-child(5)::before {
     content: "";
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgb%28255%2C107%2C0%29' stroke-opacity='0.85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.04 4.69a.5.5 0 0 1 .65-.65l16 6.5a.5.5 0 0 1-.06.95l-6.12 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.12a.5.5 0 0 1-.95.06z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgb%28255%2C107%2C0%29' stroke-opacity='0.85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z'/%3E%3Cpath d='m21.854 2.147-10.94 10.939'/%3E%3C/svg%3E");
 }
 
 .current-role .company-details li:nth-child(6)::before,
@@ -2609,5 +2609,74 @@ main > section:not(#intro) > h2 + * {
 @media (max-width: 768px) {
     main > section:not(#intro) > h2 {
         margin-bottom: 2rem;
+    }
+}
+
+/* Current Role cards: each card names the product it delivered */
+.current-role .company-details .role-item {
+    flex: 1;
+    min-width: 0;
+}
+
+.current-role .company-details .role-item h4 {
+    margin: 0;
+    padding-top: 0.4rem;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    color: var(--primary-color);
+}
+
+.current-role .company-details .role-item p {
+    margin: 0.5rem 0 0;
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--secondary-color);
+}
+
+.current-role .company-details li {
+    padding: 1.5rem;
+}
+
+.current-role .company-details li::before,
+[data-theme='dark'] .current-role .company-details li::before {
+    margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    .current-role .company-details li {
+        padding: 1.25rem;
+    }
+
+    .current-role .company-details .role-item p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Mobile: icon and product name share a row, the description uses the full card width */
+@media (max-width: 768px) {
+    .current-role .company-details li {
+        display: grid;
+        grid-template-columns: 36px 1fr;
+        column-gap: 0.875rem;
+        row-gap: 0;
+        align-items: start;
+    }
+
+    .current-role .company-details .role-item {
+        display: contents;
+    }
+
+    .current-role .company-details .role-item h4 {
+        grid-column: 2;
+        align-self: center;
+        padding-top: 0;
+    }
+
+    .current-role .company-details .role-item p {
+        grid-column: 1 / -1;
+        margin-top: 0.75rem;
     }
 }
