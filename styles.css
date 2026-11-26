@@ -1733,35 +1733,6 @@ body {
     margin-top: 1rem;
 }
 
-.key-numbers {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-    margin-top: 3rem;
-    max-width: 960px;
-}
-
-.key-number {
-    padding: 1.25rem 1.5rem;
-    border-radius: var(--border-radius);
-    background: rgba(var(--primary-rgb), 0.04);
-}
-
-.key-number strong {
-    display: block;
-    font-size: 1.75rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    color: var(--primary-color);
-    margin-bottom: 0.35rem;
-}
-
-.key-number span {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: var(--secondary-color);
-}
-
 @media (min-width: 769px) {
     .project-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1772,66 +1743,12 @@ body {
     }
 }
 
-.role-block {
-    margin-top: 3rem;
-}
-
-.role-header {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    margin-bottom: 2rem;
-}
-
-.role-header h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 0.35rem;
-}
-
-.role-header p {
-    color: var(--secondary-color);
-    line-height: 1.6;
-}
-
-.result-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.result-list li {
-    display: grid;
-    grid-template-columns: 180px minmax(0, 1fr);
-    gap: 2rem;
-    padding: 1.25rem 0;
-    border-top: 1px solid rgba(var(--primary-rgb), 0.1);
-}
-
-.result-list li:last-child {
-    border-bottom: 1px solid rgba(var(--primary-rgb), 0.1);
-}
-
-.result-figure {
-    font-size: 1.25rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: var(--primary-color);
-}
-
-.result-text {
-    line-height: 1.6;
-    color: var(--secondary-color);
-    max-width: 720px;
-}
-
 .approach-text {
     font-size: 1.35rem;
     line-height: 1.55;
     color: var(--secondary-color);
     max-width: 800px;
-    margin-top: 2.5rem;
+    margin-top: 1.5rem;
 }
 
 .timeline {
@@ -1886,27 +1803,9 @@ body {
         margin-top: 0;
     }
 
-    .key-numbers {
-        grid-template-columns: 1fr;
-        gap: 0.75rem;
-        margin-top: 2rem;
-    }
-
-    .key-number {
-        padding: 1rem 1.25rem;
-    }
-
-    .key-number strong {
-        font-size: 1.4rem;
-    }
-
-    .result-list li {
-        grid-template-columns: 1fr;
-        gap: 0.35rem;
-    }
-
     .approach-text {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        line-height: 1.6;
     }
 
     .timeline {
@@ -1923,4 +1822,32 @@ body {
 
 .project .year {
     white-space: nowrap;
+}
+
+/* Plain How I Work and quieter headline */
+.expertise-item,
+.expertise-item:hover,
+.is-visible .expertise-item,
+.is-visible .expertise-item:hover {
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    transform: none;
+}
+
+#intro h2 {
+    font-size: 2.75rem;
+    line-height: 1.15;
+    max-width: 800px;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    #intro h2 {
+        font-size: 1.75rem;
+    }
+}
+
+.approach-text .highlight {
+    font-size: inherit;
 }
