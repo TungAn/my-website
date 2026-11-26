@@ -2198,3 +2198,51 @@ header {
         transition: none;
     }
 }
+
+/* ===== Hero: lines rise in, then the key phrases get an underline ===== */
+#intro .key {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--primary-color);
+    background-image: linear-gradient(90deg, var(--highlight-color), var(--highlight-color));
+    background-repeat: no-repeat;
+    background-position: 0 92%;
+    background-size: 0% 2px;
+    animation: hero-underline 0.8s ease-out forwards;
+}
+
+#intro .key:nth-of-type(1) { animation-delay: 0.7s; }
+#intro .key:nth-of-type(2) { animation-delay: 1.0s; }
+
+@keyframes hero-underline {
+    to { background-size: 100% 2px; }
+}
+
+#intro h2,
+#intro .intro-text {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: hero-rise 0.7s ease-out forwards;
+}
+
+#intro .intro-text {
+    animation-delay: 0.2s;
+}
+
+@keyframes hero-rise {
+    to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #intro .key,
+    #intro h2,
+    #intro .intro-text {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    #intro .key {
+        background-size: 100% 2px;
+    }
+}
