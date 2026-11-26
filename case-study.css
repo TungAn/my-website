@@ -523,3 +523,73 @@
         grid-template-columns: repeat(2, 1fr);
     }
 } 
+/* ===== Glass UI for case studies (ui-glass branch) ===== */
+.key-points,
+.quote,
+.result-item,
+.insight-card,
+.case-study-image {
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow:
+        inset 0 1px 0 var(--glass-highlight),
+        0 8px 32px var(--glass-edge);
+}
+
+.insight-icon {
+    background: rgba(var(--primary-rgb), 0.06);
+    border: 1px solid var(--glass-border);
+}
+
+.case-study-image img {
+    border-radius: calc(var(--border-radius) - 4px);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .key-points,
+    .quote,
+    .result-item,
+    .insight-card,
+    .case-study-image {
+        background: var(--background-alt);
+    }
+}
+
+/* Insight cards need inner spacing now that they have a glass surface */
+.insight-card {
+    padding: 1.25rem 1.5rem;
+    gap: 1rem;
+    border-radius: var(--border-radius);
+}
+
+.insight-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    color: var(--highlight-color);
+}
+
+.insight-card p {
+    padding-top: 0.35rem;
+    line-height: 1.6;
+}
+
+.insight-card p strong {
+    display: block;
+    color: var(--primary-color);
+    margin-bottom: 0.25rem;
+}
+
+@media (max-width: 768px) {
+    .insight-card {
+        padding: 1rem 1.25rem;
+    }
+}
+
+.insight-icon svg {
+    width: 18px;
+    height: 18px;
+    color: var(--highlight-color);
+}

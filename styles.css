@@ -2058,3 +2058,92 @@ body {
     margin-left: 0;
     margin-right: 0;
 }
+
+/* ===== Glass UI (ui-glass branch) ===== */
+:root {
+    --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.42));
+    --glass-border: rgba(255, 255, 255, 0.75);
+    --glass-edge: rgba(17, 17, 17, 0.06);
+    --glass-highlight: rgba(255, 255, 255, 0.9);
+    --glass-blur: blur(22px) saturate(170%);
+    --ambient-1: rgba(255, 122, 26, 0.16);
+    --ambient-2: rgba(90, 120, 255, 0.12);
+    --ambient-3: rgba(30, 190, 170, 0.10);
+}
+
+[data-theme='dark'] {
+    --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-edge: rgba(0, 0, 0, 0.35);
+    --glass-highlight: rgba(255, 255, 255, 0.14);
+    --ambient-1: rgba(255, 107, 0, 0.16);
+    --ambient-2: rgba(80, 110, 255, 0.13);
+    --ambient-3: rgba(20, 180, 160, 0.08);
+}
+
+/* Soft colour behind the page, so the glass has something to blur */
+html {
+    background-color: var(--background-color);
+    background-image:
+        radial-gradient(40rem 30rem at 12% 8%, var(--ambient-1), transparent 70%),
+        radial-gradient(45rem 35rem at 92% 38%, var(--ambient-2), transparent 70%),
+        radial-gradient(40rem 32rem at 20% 88%, var(--ambient-3), transparent 70%);
+    background-attachment: fixed;
+}
+
+body {
+    background-color: transparent;
+}
+
+/* Glass surfaces */
+header,
+.project-link,
+.current-role .company-details li {
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow:
+        inset 0 1px 0 var(--glass-highlight),
+        0 8px 32px var(--glass-edge);
+}
+
+/* Header floats as a rounded glass bar */
+header {
+    top: 0.75rem;
+    margin: 0.75rem auto 0;
+    max-width: calc(var(--max-width) - 2rem);
+    border-radius: 18px;
+    padding: 1rem 1.5rem;
+}
+
+[data-theme='dark'] .project-link,
+[data-theme='dark'] .current-role .company-details li {
+    background: var(--glass-bg);
+}
+
+.project-link:hover {
+    border-color: rgba(var(--primary-rgb), 0.22);
+}
+
+@media (max-width: 768px) {
+    header {
+        top: 0.5rem;
+        margin: 0.5rem 0.75rem 0;
+        padding: 0.75rem 1rem;
+        border-radius: 16px;
+    }
+
+    .current-role .company-details li,
+    [data-theme='dark'] .current-role .company-details li {
+        background: var(--glass-bg);
+    }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    header,
+    .project-link,
+    .current-role .company-details li {
+        background: var(--background-alt);
+    }
+}
