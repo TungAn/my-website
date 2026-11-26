@@ -2548,3 +2548,10 @@ header,
         background: var(--header-glass-bg);
     }
 }
+
+/* Mobile: space between the floating header and the hero (an older mobile rule set it to 0) */
+@media (max-width: 768px) {
+    main:not(.case-study) {
+        padding-top: 3.5rem;
+    }
+}
