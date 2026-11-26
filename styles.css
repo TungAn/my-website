@@ -2246,3 +2246,164 @@ header {
         background-size: 100% 2px;
     }
 }
+
+/* Current Role cards: same icon tile and icon set as the case study insight cards */
+.current-role .company-details li {
+    padding: calc(1.25rem + 0.35rem) 1.5rem 1.25rem;
+}
+
+.current-role .company-details li::before,
+[data-theme='dark'] .current-role .company-details li::before {
+    content: "";
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    margin-top: -0.35rem;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 1px solid var(--glass-border);
+    background-color: rgba(var(--primary-rgb), 0.06);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px 18px;
+}
+
+.current-role .company-details li:nth-child(1)::before,
+[data-theme='dark'] .current-role .company-details li:nth-child(1)::before {
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgb%28255%2C107%2C0%29' stroke-opacity='0.85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='7' height='9' rx='1'/%3E%3Crect x='14' y='3' width='7' height='5' rx='1'/%3E%3Crect x='14' y='12' width='7' height='9' rx='1'/%3E%3Crect x='3' y='16' width='7' height='5' rx='1'/%3E%3C/svg%3E");
+}
+
+.current-role .company-details li:nth-child(2)::before,
+[data-theme='dark'] .current-role .company-details li:nth-child(2)::before {
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgb%28255%2C107%2C0%29' stroke-opacity='0.85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 7l-8.5 8.5-5-5L2 17'/%3E%3Cpath d='M16 7h6v6'/%3E%3C/svg%3E");
+}
+
+.current-role .company-details li:nth-child(3)::before,
+[data-theme='dark'] .current-role .company-details li:nth-child(3)::before {
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgb%28255%2C107%2C0%29' stroke-opacity='0.85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'/%3E%3C/svg%3E");
+}
+
+.current-role .company-details li:nth-child(4)::before,
+[data-theme='dark'] .current-role .company-details li:nth-child(4)::before {
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgb%28255%2C107%2C0%29' stroke-opacity='0.85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2Z'/%3E%3Cpath d='M12 18h.01'/%3E%3C/svg%3E");
+}
+
+.current-role .company-details li:nth-child(5)::before,
+[data-theme='dark'] .current-role .company-details li:nth-child(5)::before {
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgb%28255%2C107%2C0%29' stroke-opacity='0.85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.04 4.69a.5.5 0 0 1 .65-.65l16 6.5a.5.5 0 0 1-.06.95l-6.12 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.12a.5.5 0 0 1-.95.06z'/%3E%3C/svg%3E");
+}
+
+.current-role .company-details li:nth-child(6)::before,
+[data-theme='dark'] .current-role .company-details li:nth-child(6)::before {
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgb%28255%2C107%2C0%29' stroke-opacity='0.85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20'/%3E%3Cpath d='M2 12h20'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 768px) {
+    .current-role .company-details li {
+        padding: calc(1rem + 0.35rem) 1.25rem 1rem;
+    }
+
+    .current-role .company-details li::before,
+    [data-theme='dark'] .current-role .company-details li::before {
+        width: 36px;
+        height: 36px;
+        padding: 0;
+    }
+}
+
+/* ===== Page glow: a very soft light follows the pointer, kept faint so cards stay the focus ===== */
+.cursor-glow {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 640px;
+    height: 640px;
+    margin: -320px 0 0 -320px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+    background: radial-gradient(circle, rgba(255, 107, 0, 0.05) 0%, rgba(255, 107, 0, 0.02) 40%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    will-change: transform;
+}
+
+[data-theme='dark'] .cursor-glow {
+    background: radial-gradient(circle, rgba(255, 120, 30, 0.06) 0%, rgba(255, 107, 0, 0.025) 40%, transparent 70%);
+}
+
+.cursor-glow.is-on {
+    opacity: 1;
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+    .cursor-glow {
+        display: none;
+    }
+}
+
+/* ===== Card glow: inner light + lit edge near the pointer. Only Selected Work cards also tilt ===== */
+.project-link,
+.current-role .company-details li,
+.insight-card,
+.key-points,
+.quote,
+.result-item {
+    position: relative;
+    isolation: isolate;
+}
+
+.card-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 107, 0, 0.10), transparent 70%);
+}
+
+.card-glow::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    padding: 1px;
+    border-radius: inherit;
+    background: radial-gradient(200px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 140, 40, 0.9), rgba(255, 107, 0, 0.3) 45%, transparent 75%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+
+.is-glowing > .card-glow {
+    opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .project-grid > .project .project-link,
+    .project-grid > .project:hover .project-link {
+        transform: perspective(900px) translateY(var(--lift, 0px)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+        transition:
+            transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+            box-shadow 0.3s ease,
+            border-color 0.3s ease;
+    }
+
+    .project-grid > .project:hover .project-link {
+        --lift: -4px;
+    }
+
+    .is-tilting {
+        transition:
+            transform 0.12s ease-out,
+            box-shadow 0.3s ease,
+            border-color 0.3s ease !important;
+    }
+}

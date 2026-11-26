@@ -371,3 +371,71 @@ function initExperienceTimeline() {
 }
 
 document.addEventListener('DOMContentLoaded', initExperienceTimeline);
+
+// Soft page glow that follows the pointer, a glow on the card under it, and tilt on Selected Work cards
+function initCardGlow() {
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!fine || reduce) return;
+
+    const glow = document.createElement('div');
+    glow.className = 'cursor-glow';
+    glow.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(glow);
+
+    let x = innerWidth / 2, y = innerHeight / 3, gx = x, gy = y, running = false;
+    const step = () => {
+        gx += (x - gx) * 0.15;
+        gy += (y - gy) * 0.15;
+        glow.style.transform = `translate3d(${gx}px, ${gy}px, 0)`;
+        if (Math.abs(x - gx) > 0.5 || Math.abs(y - gy) > 0.5) requestAnimationFrame(step);
+        else running = false;
+    };
+
+    document.addEventListener('pointermove', (e) => {
+        x = e.clientX;
+        y = e.clientY;
+        glow.classList.add('is-on');
+        if (!running) { running = true; requestAnimationFrame(step); }
+    });
+    document.documentElement.addEventListener('pointerleave', () => glow.classList.remove('is-on'));
+
+    const selector = '.project-link, .current-role .company-details li, .insight-card, .key-points, .quote, .result-item';
+    let active = null;
+
+    const reset = (card) => {
+        card.classList.remove('is-glowing', 'is-tilting');
+        card.style.setProperty('--rx', '0deg');
+        card.style.setProperty('--ry', '0deg');
+    };
+
+    document.addEventListener('pointermove', (e) => {
+        const card = e.target instanceof Element ? e.target.closest(selector) : null;
+        if (active && active !== card) { reset(active); active = null; }
+        if (!card) return;
+        if (!card.querySelector(':scope > .card-glow')) {
+            const layer = document.createElement('span');
+            layer.className = 'card-glow';
+            layer.setAttribute('aria-hidden', 'true');
+            card.prepend(layer);
+        }
+        active = card;
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width;
+        const py = (e.clientY - r.top) / r.height;
+        card.style.setProperty('--mx', `${px * 100}%`);
+        card.style.setProperty('--my', `${py * 100}%`);
+        card.classList.add('is-glowing');
+        // Only Selected Work cards tilt; text cards just glow
+        if (card.classList.contains('project-link')) {
+            const max = 6;
+            card.style.setProperty('--ry', `${((px - 0.5) * 2 * max).toFixed(2)}deg`);
+            card.style.setProperty('--rx', `${((0.5 - py) * 2 * max).toFixed(2)}deg`);
+            card.classList.add('is-tilting');
+        }
+    });
+
+    document.addEventListener('pointerleave', () => { if (active) { reset(active); active = null; } });
+}
+
+document.addEventListener('DOMContentLoaded', initCardGlow);
