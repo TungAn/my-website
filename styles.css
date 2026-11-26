@@ -2581,3 +2581,33 @@ footer h2 {
     font-size: clamp(1.75rem, 1.35rem + 1.8vw, 2.5rem);   /* 28px -> 40px */
     line-height: 1.2;
 }
+
+/* ===== Section title -> content spacing: one gap everywhere =====
+   The heading's margin is the only spacer (48px desktop, 32px mobile); content starts flush. */
+main > section:not(#intro) > h2 {
+    margin-bottom: 3rem;
+}
+
+main > section:not(#intro) > h2 + * {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+#current .current-role {
+    padding-top: 0;
+}
+
+/* Section content that sets its own top margin with an ID selector */
+#projects .project-grid,
+#current .current-role-grid,
+#experience .timeline,
+#expertise .expertise-grid {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+@media (max-width: 768px) {
+    main > section:not(#intro) > h2 {
+        margin-bottom: 2rem;
+    }
+}
