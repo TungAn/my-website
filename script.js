@@ -334,3 +334,40 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsObserver.observe(resultsGrid);
     }
 }); 
+// Previous Experience timeline: the active dot follows the scroll position
+function initExperienceTimeline() {
+    const timeline = document.querySelector('#experience .timeline');
+    if (!timeline) return;
+    const items = Array.from(timeline.querySelectorAll('li'));
+    if (!items.length) return;
+    let ticking = false;
+
+    const update = () => {
+        ticking = false;
+        const line = window.innerHeight * 0.55;
+        let active = 0;
+        items.forEach((item, i) => {
+            if (item.getBoundingClientRect().top <= line) active = i;
+        });
+        items.forEach((item, i) => {
+            item.classList.toggle('is-active', i === active);
+            item.classList.toggle('is-past', i < active);
+        });
+        const dot = items[active].getBoundingClientRect();
+        const top = timeline.getBoundingClientRect().top;
+        timeline.style.setProperty('--tl-progress', Math.max(0, dot.top - top + 11) + 'px');
+    };
+
+    const onScroll = () => {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(update);
+        }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+}
+
+document.addEventListener('DOMContentLoaded', initExperienceTimeline);
