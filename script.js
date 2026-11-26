@@ -38,14 +38,14 @@ initializeTheme();
 // Project data
 const projects = [
     {
-        year: 'Now',
+        year: '2022–23',
         logo: {
             dark: 'assets/glints-logo.svg',
             light: 'assets/glints-logo-light.svg'
         },
-        title: 'Glints Chat-Driven Matching',
+        title: 'Glints Chat to Apply',
         subtitle: 'From Cold Application to Conversations',
-        description: 'Redefining job matching through chat-based interactions, improving matching efficiency by 64%.',
+        description: 'Let candidates chat with employers instead of only sending a CV. In the MVP, applications processed within a day went from 9.7% to 18.4%.',
         readTime: '8 min read',
         link: 'glints-case-study',
         expandable: true
