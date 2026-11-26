@@ -2322,9 +2322,9 @@ header {
     position: fixed;
     left: 0;
     top: 0;
-    width: 640px;
-    height: 640px;
-    margin: -320px 0 0 -320px;
+    width: 400px;
+    height: 400px;
+    margin: -200px 0 0 -200px;
     border-radius: 50%;
     pointer-events: none;
     z-index: -1;
@@ -2354,7 +2354,8 @@ header {
 .insight-card,
 .key-points,
 .quote,
-.result-item {
+.result-item,
+.case-study-image {
     position: relative;
     isolation: isolate;
 }
@@ -2405,5 +2406,50 @@ header {
             transform 0.12s ease-out,
             box-shadow 0.3s ease,
             border-color 0.3s ease !important;
+    }
+}
+
+/* ===== Scrollbar: thin glass thumb on a clear track, orange on hover ===== */
+:root {
+    --scroll-thumb: rgba(17, 17, 17, 0.18);
+    --scroll-thumb-hover: rgba(255, 107, 0, 0.7);
+}
+
+[data-theme='dark'] {
+    --scroll-thumb: rgba(255, 255, 255, 0.16);
+    --scroll-thumb-hover: rgba(255, 120, 30, 0.75);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-thumb);
+    border-radius: 999px;
+    /* Transparent border + padding-box keeps the visible thumb slim with space around it */
+    border: 3px solid transparent;
+    background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
+    background-color: var(--scroll-thumb-hover);
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+/* Firefox has no ::-webkit-scrollbar, so use the standard properties there */
+@supports not selector(::-webkit-scrollbar) {
+    html {
+        scrollbar-width: thin;
+        scrollbar-color: var(--scroll-thumb) transparent;
     }
 }

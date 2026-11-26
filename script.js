@@ -381,7 +381,8 @@ function initCardGlow() {
     const glow = document.createElement('div');
     glow.className = 'cursor-glow';
     glow.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(glow);
+    // Attach to <html>: body has a transform, which would pin a fixed element to the body instead of the window
+    document.documentElement.appendChild(glow);
 
     let x = innerWidth / 2, y = innerHeight / 3, gx = x, gy = y, running = false;
     const step = () => {
@@ -400,7 +401,7 @@ function initCardGlow() {
     });
     document.documentElement.addEventListener('pointerleave', () => glow.classList.remove('is-on'));
 
-    const selector = '.project-link, .current-role .company-details li, .insight-card, .key-points, .quote, .result-item';
+    const selector = '.project-link, .current-role .company-details li, .insight-card, .key-points, .quote, .result-item, .case-study-image';
     let active = null;
 
     const reset = (card) => {
@@ -428,7 +429,7 @@ function initCardGlow() {
         card.classList.add('is-glowing');
         // Only Selected Work cards tilt; text cards just glow
         if (card.classList.contains('project-link')) {
-            const max = 6;
+            const max = 2.5;
             card.style.setProperty('--ry', `${((px - 0.5) * 2 * max).toFixed(2)}deg`);
             card.style.setProperty('--rx', `${((0.5 - py) * 2 * max).toFixed(2)}deg`);
             card.classList.add('is-tilting');

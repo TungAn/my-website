@@ -593,3 +593,18 @@
     height: 18px;
     color: var(--highlight-color);
 }
+
+/* Case study images get the card glow on their border. The glow sits on the border,
+   so the frame can't clip it; the image is rounded to the frame's inner radius instead. */
+.case-study-image {
+    overflow: visible;
+}
+
+.case-study-image img {
+    border-radius: calc(var(--border-radius) - 1px);
+}
+
+.case-study-image > .card-glow {
+    z-index: 1;
+    background: none;
+}
