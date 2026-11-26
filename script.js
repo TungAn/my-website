@@ -56,7 +56,7 @@ const projects = [
             light: 'assets/laz-logo-light.svg'
         },
         title: 'Lazada Payment Revamp',
-        description: 'Increasing wallet usage by 17% and reducing cash-on-delivery by 14% across Southeast Asia.',
+        description: 'We started with the market that had the most payment methods, then scaled to six. Wallet adoption went up 17%, and cash-on-delivery dropped 14%.',
         readTime: '10 min read',
         link: 'lazada-case-study',
         expandable: true
@@ -68,7 +68,7 @@ const projects = [
             light: 'assets/popjam-logo-light.svg'
         },
         title: 'PopJam',
-        description: 'Launched a safe social network for children across APAC, including Vietnam: 1.2M users in 8 months.',
+        description: 'Leadership wanted a video app, but we built Kid Challenges instead. 1.2M users across APAC in 8 months.',
         readTime: '7 min read',
         link: 'popjam-case-study',
         expandable: true
