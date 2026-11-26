@@ -2552,6 +2552,32 @@ header,
 /* Mobile: space between the floating header and the hero (an older mobile rule set it to 0) */
 @media (max-width: 768px) {
     main:not(.case-study) {
-        padding-top: 3.5rem;
+        padding-top: 6rem;
     }
+}
+
+/* ===== Type scale: hero > footer statement > section headings > card titles > body =====
+   Fluid sizes (clamp) so each level keeps its step between mobile (375px) and desktop. */
+#intro h2 {
+    font-size: clamp(2.25rem, 1.6rem + 2.8vw, 3.5rem);   /* 36px -> 56px */
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    max-width: 860px;
+}
+
+#intro .intro-text {
+    font-size: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);  /* 18px -> 22px */
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+    max-width: 640px;
+}
+
+main > section:not(#intro) > h2 {
+    font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem);        /* 24px -> 32px */
+    line-height: 1.2;
+}
+
+footer h2 {
+    font-size: clamp(1.75rem, 1.35rem + 1.8vw, 2.5rem);   /* 28px -> 40px */
+    line-height: 1.2;
 }
