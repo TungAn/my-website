@@ -44,7 +44,7 @@ const projects = [
             light: 'assets/glints-logo-light.svg'
         },
         title: 'Glints Chat to Apply',
-        description: 'How letting candidates chat with employers, not only send a CV, got applications processed faster.',
+        description: 'The resume was the first barrier to applying. Making chat the first action got applications processed faster.',
         readTime: '8 min read',
         link: 'glints-case-study',
         expandable: true
@@ -68,7 +68,7 @@ const projects = [
             light: 'assets/popjam-logo-light.svg'
         },
         title: 'PopJam',
-        description: 'Launched a social network for children in Vietnam, achieving over 1 million users in 8 months with a focus on safety and creativity.',
+        description: 'Launched a safe social network for children across APAC, including Vietnam: 1.2M users in 8 months.',
         readTime: '7 min read',
         link: 'popjam-case-study',
         expandable: true
