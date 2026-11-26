@@ -40,8 +40,8 @@ const projects = [
     {
         year: '2022–23',
         logo: {
-            dark: 'assets/glints-logo.svg',
-            light: 'assets/glints-logo-light.svg'
+            dark: 'assets/glints-logo.svg?v=2',
+            light: 'assets/glints-logo-light.svg?v=2'
         },
         title: 'Glints Chat to Apply',
         description: 'The resume was the first barrier to applying. Making chat the first action got applications processed faster.',
