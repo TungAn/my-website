@@ -2525,3 +2525,26 @@ header {
         animation: none;
     }
 }
+
+/* ===== Header readability: a tinted glass so menu text stays legible over images =====
+   The card glass is a light tint, which turns white over a white chart and hides white text.
+   The header keeps the blur but carries its own base colour. */
+:root {
+    --header-glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.86), rgba(250, 250, 250, 0.74));
+}
+
+[data-theme='dark'] {
+    --header-glass-bg: linear-gradient(135deg, rgba(34, 34, 36, 0.82), rgba(22, 22, 24, 0.72));
+}
+
+header,
+[data-theme='dark'] header {
+    background: var(--header-glass-bg);
+}
+
+@media (max-width: 768px) {
+    header,
+    [data-theme='dark'] header {
+        background: var(--header-glass-bg);
+    }
+}

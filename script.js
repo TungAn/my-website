@@ -453,10 +453,24 @@ function initHeaderAutoHide() {
     let anchorY = lastY;     // where the current scroll direction started
     let goingDown = true;
     let ticking = false;
+    // On reload the browser jumps back to the old scroll position. That jump is not
+    // the visitor scrolling, so ignore scroll until the page has settled.
+    let ready = false;
+    const settle = () => setTimeout(() => {
+        lastY = anchorY = window.scrollY;
+        ready = true;
+    }, 400);
+    if (document.readyState === 'complete') settle();
+    else window.addEventListener('load', settle, { once: true });
 
     const update = () => {
         ticking = false;
         const y = window.scrollY;
+        if (!ready) {
+            lastY = anchorY = y;
+            header.classList.remove('is-hidden');
+            return;
+        }
         const down = y > lastY;
         if (y !== lastY && down !== goingDown) {
             goingDown = down;
