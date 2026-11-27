@@ -632,3 +632,69 @@
     padding: 0.75rem 1rem 0.875rem;
     text-align: center;
 }
+
+/* ===== Table of contents: desktop only, built by script.js from the section headings ===== */
+.cs-toc { display: none; }
+@media (min-width: 1280px) {
+    /* a zero-height sticky rail inside <main>; the list hangs in the left gutter, beside the 800px reading column */
+    .cs-toc {
+        display: block;
+        position: sticky;
+        top: calc(var(--header-height) + 2rem);
+        height: 0;
+        z-index: 2;
+    }
+    .cs-toc-inner {
+        position: absolute;
+        top: 0;
+        right: calc(50% + 400px + 1.5rem);
+        width: min(13rem, calc(50vw - 400px - 3.5rem));
+        transition: opacity 0.3s ease;
+    }
+    .cs-toc.is-done .cs-toc-inner { opacity: 0; pointer-events: none; }
+    .cs-toc-title {
+        margin: 0 0 0.875rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--secondary-color);
+    }
+    .cs-toc ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        border-left: 1px solid rgba(var(--primary-rgb), 0.14);
+    }
+    .cs-toc li { margin: 0; }
+    .cs-toc a {
+        position: relative;
+        display: block;
+        padding: 0.4rem 0 0.4rem 1rem;
+        font-size: 0.8125rem;
+        line-height: 1.4;
+        color: rgba(var(--primary-rgb), 0.55);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+    .cs-toc a::before {
+        content: '';
+        position: absolute;
+        left: -1px;
+        top: 0.4rem;
+        bottom: 0.4rem;
+        width: 2px;
+        border-radius: 2px;
+        background: var(--highlight-color);
+        transform: scaleY(0);
+        transition: transform 0.25s ease;
+    }
+    .cs-toc a:hover { color: var(--primary-color); }
+    .cs-toc a.is-active { color: var(--primary-color); font-weight: 500; }
+    .cs-toc a.is-active::before { transform: scaleY(1); }
+    .cs-toc a:focus-visible { outline: 2px solid var(--highlight-color); outline-offset: 2px; border-radius: 4px; }
+}
+.case-study .case-study-section > h2[id] { scroll-margin-top: calc(var(--header-height) + 2rem); }
+@media (prefers-reduced-motion: reduce) {
+    .cs-toc-inner, .cs-toc a, .cs-toc a::before { transition: none; }
+}

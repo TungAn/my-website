@@ -511,3 +511,75 @@ document.addEventListener('DOMContentLoaded', initHeaderAutoHide);
     }, { threshold: 0.3 });
     els.forEach(function (el) { io.observe(el); });
 })();
+
+// Case studies: sticky table of contents (desktop), built from each section's h2
+(function () {
+    var main = document.querySelector('main.case-study');
+    if (!main) return;
+    var heads = Array.prototype.slice.call(main.querySelectorAll('.case-study-section > h2'));
+    if (heads.length < 3) return;
+
+    var used = {};
+    heads.forEach(function (h) {
+        if (!h.id) {
+            var base = h.textContent.toLowerCase().replace(/&/g, 'and').replace(/['’]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'section';
+            var id = base, n = 2;
+            while (used[id] || document.getElementById(id)) { id = base + '-' + n++; }
+            h.id = id;
+        }
+        used[h.id] = true;
+    });
+
+    var nav = document.createElement('nav');
+    nav.className = 'cs-toc';
+    nav.setAttribute('aria-label', 'In this article');
+    var inner = document.createElement('div');
+    inner.className = 'cs-toc-inner';
+    var title = document.createElement('p');
+    title.className = 'cs-toc-title';
+    title.textContent = 'In this article';
+    var list = document.createElement('ol');
+    var links = heads.map(function (h) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.getAttribute('data-toc') || h.textContent.trim();
+        a.addEventListener('click', function (e) {
+            e.preventDefault();
+            var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            h.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+            if (history.replaceState) history.replaceState(null, '', '#' + h.id);
+        });
+        li.appendChild(a);
+        list.appendChild(li);
+        return a;
+    });
+    inner.appendChild(title);
+    inner.appendChild(list);
+    nav.appendChild(inner);
+    // the rail starts at the first section, so the list appears once the hero is passed
+    var first = heads[0].closest('.case-study-section');
+    main.insertBefore(nav, first);
+
+    var end = main.querySelector('.case-study-nav');
+    var ticking = false;
+    function update() {
+        ticking = false;
+        var line = window.innerHeight * 0.35;
+        var active = -1;
+        heads.forEach(function (h, i) { if (h.getBoundingClientRect().top <= line) active = i; });
+        links.forEach(function (a, i) {
+            var on = i === active;
+            a.classList.toggle('is-active', on);
+            if (on) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current');
+        });
+        // fade out once the article ends, so it doesn't sit beside the next-project links
+        var listBottom = inner.getBoundingClientRect().bottom;
+        nav.classList.toggle('is-done', !!end && end.getBoundingClientRect().top < listBottom + 24);
+    }
+    window.addEventListener('scroll', function () {
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+})();
