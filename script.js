@@ -44,7 +44,7 @@ const projects = [
             light: 'assets/glints-logo-light.svg?v=4'
         },
         title: 'Glints Shortlist Quota',
-        description: 'Employers dodged the per-job limit by posting again. One monthly quota for the company, with prices at the wall, nearly doubled the share who bought after hitting it.',
+        description: 'Employers kept posting the same job again to get more shortlists. Moving to one monthly quota for the whole company, with prices shown at the limit, almost doubled the share who bought after hitting it.',
         readTime: '10 min read',
         link: 'glints-shortlist-quota',
         expandable: true
@@ -56,7 +56,7 @@ const projects = [
             light: 'assets/glints-logo-light.svg?v=4'
         },
         title: 'Glints Chat to Apply',
-        description: 'The resume was the first barrier to applying. Making chat the first action got applications processed faster.',
+        description: 'Many candidates stopped at the resume step and never applied. Letting them start with a chat instead got their applications processed faster.',
         readTime: '8 min read',
         link: 'glints-case-study',
         expandable: true
@@ -582,4 +582,84 @@ document.addEventListener('DOMContentLoaded', initHeaderAutoHide);
     }, { passive: true });
     window.addEventListener('resize', update);
     update();
+})();
+
+// ===== Analytics: engagement events for GA4 (no-op when the Google tag isn't on the page) =====
+(function () {
+    function track(name, params) {
+        if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+    }
+    var path = location.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+    var isCaseStudy = !!document.querySelector('main.case-study');
+    var project = isCaseStudy ? path.replace(/^\//, '') : null;
+    var started = Date.now();
+
+    // Clicks: case study cards, next/back links, contact, header nav, contents
+    document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        if (a.closest('.project-grid')) {
+            var title = a.querySelector('h3');
+            track('case_study_open', { project: href.replace(/\.html$/, '').replace(/^\//, ''), project_title: title ? title.textContent.trim() : '', from: 'home' });
+        } else if (a.closest('.case-study-nav')) {
+            var label = (a.querySelector('.nav-title') || a).textContent.trim();
+            var dest = href.replace(/\.html$/, '').replace(/^\//, '');
+            if (dest.indexOf('#') === 0 || dest === '' || dest.indexOf('#projects') > -1) track('case_study_back', { project: project });
+            else track('case_study_open', { project: dest, project_title: label, from: project || path });
+        } else if (href.indexOf('mailto:') === 0) {
+            track('contact_click', { method: 'email', page: path });
+        } else if (/linkedin\.com/i.test(href)) {
+            track('contact_click', { method: 'linkedin', page: path });
+        } else if (a.closest('.cs-toc')) {
+            track('toc_click', { project: project, section: a.textContent.trim() });
+        } else if (a.closest('header nav')) {
+            track('nav_click', { label: a.textContent.trim(), page: path });
+        }
+    }, true);
+
+    // Theme toggle
+    var toggle = document.getElementById('theme-toggle');
+    if (toggle) toggle.addEventListener('click', function () {
+        setTimeout(function () { track('theme_toggle', { theme: document.documentElement.getAttribute('data-theme') || 'dark', page: path }); }, 0);
+    });
+
+    if (!isCaseStudy) return;
+
+    // Reading depth: 25 / 50 / 75 / 100% of the article
+    var main = document.querySelector('main.case-study');
+    var marks = [25, 50, 75, 100], sent = {};
+    function depth() {
+        var r = main.getBoundingClientRect();
+        var seen = (window.innerHeight - r.top) / r.height * 100;
+        marks.forEach(function (m) {
+            if (!sent[m] && seen >= m) { sent[m] = true; track('case_study_progress', { project: project, percent: m }); }
+        });
+    }
+    var tick = false;
+    window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(function () { tick = false; depth(); }); } }, { passive: true });
+    depth();
+
+    // Sections read: each h2 once, when it reaches the upper half of the screen
+    if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+                if (!en.isIntersecting) return;
+                io.unobserve(en.target);
+                track('section_view', { project: project, section: en.target.textContent.trim() });
+            });
+        }, { rootMargin: '0px 0px -50% 0px' });
+        document.querySelectorAll('.case-study-section > h2').forEach(function (h) { io.observe(h); });
+
+        // Finished: the end-of-article navigation comes into view
+        var end = document.querySelector('.case-study-nav');
+        if (end) {
+            var eo = new IntersectionObserver(function (entries) {
+                if (!entries[0].isIntersecting) return;
+                eo.disconnect();
+                track('case_study_complete', { project: project, seconds: Math.round((Date.now() - started) / 1000) });
+            });
+            eo.observe(end);
+        }
+    }
 })();
