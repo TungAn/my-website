@@ -401,7 +401,7 @@ function initCardGlow() {
     });
     document.documentElement.addEventListener('pointerleave', () => glow.classList.remove('is-on'));
 
-    const selector = '.project-link, .current-role .company-details li, .insight-card, .key-points, .quote, .result-item, .case-study-image';
+    const selector = '.project-link, .current-role .company-details li, .insight-card, .key-points, .quote, .result-item, .case-study-image, .barrier, .option, .matrix, .hero-chat';
     let active = null;
 
     const reset = (card) => {
@@ -496,3 +496,18 @@ function initHeaderAutoHide() {
 }
 
 document.addEventListener('DOMContentLoaded', initHeaderAutoHide);
+
+
+// Case study figures (matrix, chart, timeline): animate once when they scroll into view
+(function () {
+    var els = document.querySelectorAll('.matrix, .chart, .timeline');
+    if (!els.length) return;
+    document.querySelectorAll('.timeline').forEach(function (el) { el.classList.add('tl-anim'); });
+    if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('in-view'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+        });
+    }, { threshold: 0.3 });
+    els.forEach(function (el) { io.observe(el); });
+})();

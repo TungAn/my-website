@@ -6,6 +6,7 @@
     <title>Glints Case Study - Tung An</title>
     <link rel="stylesheet" href="styles.css?v=20261127product">
     <link rel="stylesheet" href="case-study.css?v=mobile2">
+    <link rel="stylesheet" href="glints-case-study.css?v=20261127">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Google tag (gtag.js) -->
@@ -53,11 +54,12 @@
     </header>
 
     <main class="case-study">
+
         <div class="case-study-hero">
             <p class="hero-subheading">From Cold Application to Conversations</p>
-            <h1>How a Chat-Driven Increased Glints Matching Efficiency</h1>
-            <p class="read-time">8 min read</p>
-            
+            <h1>Making Chat the First Step of Applying</h1>
+            <p class="read-time">7 min read</p>
+
             <div class="meta-grid">
                 <div class="meta-item">
                     <h3>Company</h3>
@@ -69,25 +71,62 @@
                 </div>
                 <div class="meta-item">
                     <h3>Timeline</h3>
-                    <p>Q4 2022 – Q3 2023</p>
+                    <p>Q2 2022 – Q3 2023</p>
+                </div>
+                <div class="meta-item">
+                    <h3>Markets</h3>
+                    <p>Vietnam, then Indonesia</p>
                 </div>
             </div>
 
             <div class="case-study-content">
-                <p>I joined Glints in Q2 2022 to launch its app in Vietnam, as both designer and PM. Then I took on a bigger problem across Southeast Asia: candidates had to prove themselves with a resume before they knew whether an employer would respond.</p>
-                <p>We didn't remove the resume. We moved it from the first step to a later check, and made chat the first action. In the MVP, the share of applications processed within a day went from 9.7% to 18.4%.</p>
-                <p>It fit Glints' bet on mobile-first hiring for small businesses.</p>
+                <p>Hiring in Southeast Asia runs on phones and small businesses. Applying on Glints still worked like a desktop job board: send a resume, then wait, often for nothing.</p>
+                <p>I joined Glints in Q2 2022 to launch its app in Vietnam, as designer and, in practice, its PM. The question we ended up working on was bigger than the app: how do candidates and employers start talking sooner?</p>
+                <p>We didn't remove the resume. We moved it from the first step to a later check, and made chat the first action.</p>
 
-                <div class="case-study-image">
-                    <img src="assets/glints-1.jpg" alt="Glints mobile-first job platform">
+                <div class="hero-chat" role="img" aria-label="Animation. Before: a candidate's resume lands on a pile of applications, and the reply is slow or never comes. After: the candidate sends a chat message, the employer replies and asks for the CV, the CV is shared in the chat, and they are connected.">
+                    <div class="hc-waves" aria-hidden="true"><span></span><span></span><span></span></div>
+                    <div class="hc-phase"><span class="before">Before · Resume first</span><span class="after">After · Chat first</span></div>
+
+                    <div class="hc-person cand">
+                        <div class="hc-avatar"><img src="assets/glints-hero-cand.png" alt=""></div>
+                        <div class="who">Candidate</div>
+                    </div>
+                    <div class="hc-person emp">
+                        <div class="hc-avatar"><img src="assets/glints-hero-emp.png" alt=""></div>
+                        <div class="who">Employer</div>
+                    </div>
+
+                    <!-- before -->
+                    <div class="hc-pile" aria-hidden="true">
+                        <div class="hc-doc"><i></i><i></i><i></i></div>
+                        <div class="hc-doc"><i></i><i></i><i></i></div>
+                        <div class="hc-doc"><i></i><i></i><i></i></div>
+                    </div>
+                    <div class="hc-doc mine" aria-hidden="true"><i></i><i></i><i></i><b>CV</b></div>
+                    <div class="hc-wait" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 3h12M6 21h12M7 3c0 5 10 5 10 9s-10 4-10 9M17 3c0 5-10 5-10 9s10 4 10 9"/></svg>
+                        Waiting for a reply
+                    </div>
+                    <div class="hc-noreply" aria-hidden="true">Slow, or usually silent</div>
+
+                    <!-- after -->
+                    <div class="hc-link" aria-hidden="true"></div>
+                    <div class="hc-thread" aria-hidden="true">
+                        <div class="hc-msg c">Hi, is this role still open?</div>
+                        <div class="hc-msg e">Yes! Could you share your CV?</div>
+                        <div class="hc-typing"><i></i><i></i><i></i></div>
+                        <div class="hc-file"><span class="doc"></span><span>CV_Andi.pdf</span><span class="ok">Shared</span></div>
+                    </div>
+                    <div class="hc-connected" aria-hidden="true">Connected</div>
                 </div>
             </div>
         </div>
 
         <div class="case-study-section">
-            <h2>The Challenge</h2>
-            <p>When I joined Glints, the platform faced critical engagement and conversion challenges:</p>
-            <div class="insights-grid">
+            <h2>Glints' Application Loop Was Breaking</h2>
+            <p class="section-sub">People were showing up on mobile, but their interest wasn't turning into applications, or into replies.</p>
+            <div class="insights-grid insights-3">
                 <div class="insight-card">
                     <div class="insight-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -95,7 +134,7 @@
                             <path d="M12 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <p><strong>Mobile underperformance</strong> Despite driving 2.3x more mobile traffic, mobile monthly active users (MAU) were half that of the desktop.</p>
+                    <p><strong>Traffic without engagement</strong> Mobile brought 2.3x more traffic than desktop, but mobile active users were half of desktop's.</p>
                 </div>
                 <div class="insight-card">
                     <div class="insight-icon">
@@ -104,21 +143,7 @@
                             <path d="M16 17H22V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <p><strong>High application drop-offs</strong> 80% of signed-up users didn't reach the application state on their 1st day, citing irrelevant job matches and friction in resume uploads.</p>
-                </div>
-                <div class="insight-card">
-                    <div class="insight-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M10 6h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M10 10h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M10 14h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M10 18h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <p><strong>Small and medium-sized enterprises (SMEs) are underserved</strong> Keyword-based job searches favor large enterprises, making it difficult for small and medium businesses to attract talent.</p>
+                    <p><strong>Sign-ups that didn't apply</strong> 80% of new sign-ups didn't apply on their first day. Half of them opened a job, then left.</p>
                 </div>
                 <div class="insight-card">
                     <div class="insight-icon">
@@ -127,211 +152,293 @@
                             <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
-                    <p><strong>Slow hiring process</strong> Resume-based applications led to sluggish employer response times, with only 20% of applications being processed, frustrating job seekers.</p>
+                    <p><strong>Applications that got no answer</strong> Only about 20% of applications were ever processed by the employer.</p>
                 </div>
             </div>
-            <p>Glints needed a mobile-first, interactive hiring experience that improved job matching, reduced application friction, and accelerated employer response times.</p>
-        </div>
+            <p class="source">Source: Glints funnel analytics at the time.</p>
 
-        <div class="case-study-section">
-            <h2>My Role</h2>
-            <p>During my time at Glints, I was responsible for:</p>
-            <div class="key-points">
-                <ul>
-                    <li>Redesigning the job-seeking experience focusing on young talents and fresh graduates by leading the end-to-end design of chat-based applications, replacing traditional Resume-based ones.</li>
-                    <li>Optimizing the candidate experience to improve job matching efficiency, including data normalization for personalization and reducing friction in the application journey.</li>
-                    <li>Building the foundation for a mobile-first employer app to increase adoption among existing web users and target specific mobile-user segments.</li>
-                    <li>Improving the mobile app monetization strategy for individual and SME employers, contributing to ~15% of the platform's revenue weekly.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="case-study-section">
-            <h2>The Transformation Process</h2>
-            
-            <h3>Start with an MVP</h3>
-            <p>From strategic alignment, the leadership wanted to explore a new way to replace the current recruitment behavior, which relied heavily on resumes.</p>
-            <p>I led a comprehensive research initiative combining quantitative and qualitative methods to understand user behavior, pain points, and market trends.</p>
+            <p>Search made it worse for the employers we cared about most. Keyword search rewards names people already type, so known brands filled the top of the results. Small businesses, often the ones that needed to hire fastest, sank to the bottom, where candidates rarely scrolled.</p>
 
             <div class="case-study-image">
-                <img src="assets/glints-2.jpg" alt="Glints research and user behavior analysis" loading="lazy">
+                <img src="assets/glints-3.jpg" alt="Keyword search results showing big brands first and small businesses last" loading="lazy">
+                <p class="image-caption">A search for "job": known brands at the top, small businesses at the bottom.</p>
             </div>
 
-            <h3>The Human Story: Young Talent Struggling to Get Noticed</h3>
-            <p>Through user interviews, I met Tuan Anh, a 22-year-old recent graduate in Ho Chi Minh City, who shared a common frustration:</p>
-            <div class="quotes">
-                <div class="quote">
-                    <p>"I've applied to dozens of jobs and mostly use my laptop due to its convenience. However, I rarely hear back. Employers view my resume, but nothing happens. I don't even know if my resume is good enough or if I'm missing something important."</p>
-                    <cite>- Tuan Anh</cite>
-                </div>
-            </div>
-            <p>This lack of feedback and uncertainty was a recurring theme across interviews, mirroring inefficiencies in traditional job platforms.</p>
-
-            <h3>From the Data: Identifying the Core Problem</h3>
-            <div class="key-points">
-                <ul>
-                    <li>80% of signed-up users didn't apply on their 1st day, where 50% of them view the job details but drop off.</li>
-                    <li>20% of applications being processed, result is lacking response from employers.</li>
-                    <li>Only 8% of new applicants return to apply again, demonstrating the low user engagement and negative overall experience.</li>
-                </ul>
-            </div>
-
-            <p>Additionally, most job searches relied on keyword-based matching, favoring large enterprises with internal hiring systems. This made them less engaged with platforms and slower to respond to candidates.</p>
-            
-            <div class="case-study-image">
-                <img src="assets/glints-3.jpg" alt="Glints core problem analysis and data insights" loading="lazy">
-            </div>
-
-            <p>In China, 51Job and Zhilian struggled with the same challenges due to a passive, one-sided job search experience.</p>
-
-            <h3>Market Validation: Lessons from China's Hiring Evolution</h3>
-            <p>In the 2010s, Boss Zhipin disrupted China's recruitment industry by replacing resume-based applications with real-time chat, making the hiring process faster and more engaging.</p>
-            <p>The market shifted to mobile-first job-seeking, with Small and medium-sized enterprises (SMEs) driving demand. As a result:</p>
-
-            <div class="key-points">
-                <ul>
-                    <li>Direct chat increased engagement, boosting daily app opens to 8.1x compared to 4-6x on traditional platforms.</li>
-                    <li>SMEs rapidly adopted chat-based hiring, with 97% of Boss Zhipin's paying employers being small businesses.</li>
-                </ul>
-            </div>
-
-            <div class="case-study-image">
-                <img src="assets/glints-4.jpg" alt="Glints mobile-first job seeking and SME market shift" loading="lazy">
-            </div>
-            <p>These insights reinforced our strategy: A mobile-first, chat-driven hiring model can significantly boost engagement and response rates, especially among our core audience of young talents and SMEs.</p>
-
-            <h3>The Turning Point: Testing the Chat-Based Model</h3>
-            <p>To validate our assumption, I designed and collaborated with engineering teams to develop a minimum viable product (MVP) - a lightweight chat-based system integrated into the current system. We carefully rolled out this MVP to a specific user segment, meticulously measuring engagement and conversion rates.</p>
-
-            <div class="case-study-image">
-                <img src="assets/glints-5.jpg" alt="Glints MVP rollout and engagement metrics" loading="lazy">
-                <p class="image-caption">Candidate Side - App</p>
-            </div>
-
-            <div class="case-study-image">
-                <img src="assets/glints-6.jpg" alt="Glints employer interface" loading="lazy">
-                <p class="image-caption">Employer Side - Web (For MVP)</p>
-            </div>
-
-            <p>The results were transformative:</p>
-            <div class="key-points">
-                <ul>
-                    <li>Matching efficiency 2x compared to traditional application methods</li>
-                    <li>Shortlisted applications increased from approximately 10% to 40%</li>
-                    <li>User interviews revealed overwhelmingly positive feedback, with candidates appreciating the chat feature's seamless integration</li>
-                </ul>
-            </div>
-            <p>Candidates specifically noted the chat interface as a safe, convenient communication channel that provides faster updates and more direct interaction with potential employers.</p>
-            <div class="quotes">
-                <div class="quote">
-                    <p>"I expect to use the chat to increase the chance to be seen by employers so I can increase the chance of getting hired"</p>
-                    <cite>- Quoc Viet</cite>
-                </div>
-                <div class="quote">
-                    <p>"I'm be able follow up on CV screening results after sending my CV and to know more about company culture, direction."</p>
-                    <cite>- Thao Linh</cite>
-                </div>
-            </div>
-            <p>From the employer side, easily connecting to the candidate and tracking the candidate through historical chat are what employers expect.</p>
-            <div class="quotes">
-                <div class="quote">
-                    <p>"It helped me easily connect with candidates"</p>
-                    <cite>- Ms. Huyen, Education Builder</cite>
-                </div>
-                <div class="quote">
-                    <p>"Can see historical data to jog my memories on why or why not I pick this candidate so I can better track them"</p>
-                    <cite>- District Eight</cite>
-                </div>
-            </div>
-
-            <h3>The Deliverables</h3>
-
-            <h4>1. Chat-Based with Mobile-First Experience</h4>
-            <div class="key-points">
-                <ul>
-                    <li>Replaced resume-based application with a chat-driven approach.</li>
-                    <li>Support real-time messaging and app push notifications, addressing slow feedback loops in hiring.</li>
-                </ul>
-            </div>
-
-            <div class="case-study-image">
-                <img src="assets/glints-7.jpg" alt="Chat-based mobile-first experience" loading="lazy">
-                <p class="image-caption">Chat-Based Mobile Experience</p>
-            </div>
-
-            <h4>2. Improve Job Matches</h4>
-            <div class="key-points">
-                <ul>
-                    <li>Optimize the onboarding and job-seeking journey to increase the main sign-up to apply funnel.</li>
-                    <li>Increase the employer processing rate by multiple design approaches to collecting key data points from users, balancing between rewards and frictions.</li>
-                </ul>
-            </div>
-
-            <div class="case-study-image">
-                <img src="assets/glints-8.jpg" alt="Job matching optimization" loading="lazy">
-                <p class="image-caption">Job Matching System</p>
-            </div>
-
-            <h4>3. Employer App & Monetization</h4>
-            <div class="key-points">
-                <ul>
-                    <li>Lay a foundation for Employer App targeting for engagement and fast reply.</li>
-                    <li>Deliver the experience for the individual and SME employer segment with a cheap and flexible pricing strategy.</li>
-                </ul>
-            </div>
-
-            <div class="case-study-image">
-                <img src="assets/glints-9.jpg" alt="Employer app and monetization features" loading="lazy">
-                <p class="image-caption">Employer App Interface</p>
+            <div class="takeaway">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 9v4M12 17h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                <p>The loop broke on both sides: candidates stopped before applying, and employers stopped before replying.</p>
             </div>
         </div>
 
         <div class="case-study-section">
-            <h2>Results & Business Transformation</h2>
-
-            <div class="results-grid">
-                <div class="result-item">
-                    <h3>65%</h3>
-                    <p>Increase in completed applications after chat-based feature launch</p>
-                </div>
-                <div class="result-item">
-                    <h3>53%</h3>
-                    <p>Faster employer response times, reducing candidate drop-offs</p>
-                </div>
-                <div class="result-item">
-                    <h3>30%</h3>
-                    <p>Peak employer app adoption on weekends</p>
-                </div>
-                <div class="result-item">
-                    <h3>2,500+ SGD</h3>
-                    <p>Weekly revenue from premium features (12% of platform revenue)</p>
-                </div>
-            </div>
+            <h2>Resume Became the First Barrier</h2>
+            <p class="section-sub">Candidates had to prove themselves before they knew whether anyone would answer.</p>
+            <p>Before designing the Vietnam app, I ran our first research there: a survey with 148 responses and 11 in-depth interviews with prototype tests. Two things stood out.</p>
+            <p>After job search itself, chat with employers was the feature people most wanted in the app. And the worst moments didn't come while applying. They came after, when nobody replied.</p>
 
             <div class="case-study-image">
-                <img src="assets/glints-10.jpg" alt="Connected Opportunities" loading="lazy">
+                <img src="assets/glints-2.jpg" alt="Slides from the 2022 Vietnam research report, including the features people wanted in the mobile app" loading="lazy">
+                <p class="image-caption">From my 2022 research report: chat with employers ranked second only to job search.</p>
             </div>
 
-            <div class="case-study-image">
-                <img src="assets/glints-11.jpg" alt="App Active Users vs. Web Active Users" loading="lazy">
+            <div class="quotes">
+                <div class="quote">
+                    <p>"I've applied to dozens of jobs and I rarely hear back. Employers view my resume, but nothing happens. I don't even know if my resume is good enough."</p>
+                    <cite>A recent graduate in Ho Chi Minh City, 2022 interviews</cite>
+                </div>
             </div>
 
-            <div class="case-study-image">
-                <img src="assets/glints-12.jpg" alt="New User Retention" loading="lazy">
-                <p class="image-caption">New User Retention, our platform witness highest retention rate compared to the local competitors</p>
+            <div class="barriers">
+                <div class="barrier">
+                    <svg class="barrier-art" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M8 3h9l6 6v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" class="art-paper"/>
+                        <path d="M17 3v4a2 2 0 0 0 2 2h4" class="art-fold"/>
+                        <rect x="9.5" y="12" width="8" height="2" rx="1" class="art-accent"/>
+                        <rect x="9.5" y="16" width="10" height="2" rx="1" class="art-line"/>
+                        <rect x="9.5" y="20" width="6" height="2" rx="1" class="art-line"/>
+                    </svg>
+                    <div>
+                        <h4>Resume became an upfront confidence barrier</h4>
+                        <p>Fresh graduates weren't sure their resume was strong enough. Uploading it on a phone made the first step feel heavy.</p>
+                    </div>
+                </div>
+                <div class="barrier">
+                    <svg class="barrier-art" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <rect x="3" y="7" width="20" height="15" rx="2.5" class="art-paper"/>
+                        <path d="M4 8.5l9 6.5 9-6.5" class="art-fold"/>
+                        <circle cx="22.5" cy="7" r="4" class="art-accent"/>
+                        <path d="M22.5 5v2.4M22.5 9.2v.1" class="art-mark"/>
+                    </svg>
+                    <div>
+                        <h4>Email slowed down the feedback loop</h4>
+                        <p>Replies came late, by email, if at all. Candidates couldn't tell whether an employer would ever respond.</p>
+                    </div>
+                </div>
             </div>
+
+            <div class="takeaway">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 9v4M12 17h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                <p>The resume still mattered. It just shouldn't be the gate.</p>
+            </div>
+        </div>
+
+        <div class="case-study-section">
+            <h2>Chat Could Unlock a Faster Hiring Loop</h2>
+            <p class="section-sub">China had already shown what happens when hiring starts with a conversation.</p>
+            <p>Boss Zhipin built China's leading hiring app on direct chat between candidates and bosses. Its users opened the app 8.1 times a day, against 4 to 6 times on traditional job platforms. And 97% of its paying companies were small businesses, the same customers we wanted to win.</p>
+            <p class="source">Source: internal study of Chinese hiring platforms, Aug 2022 (QuestMobile data, Jun 2022).</p>
+
+            <figure class="matrix-figure">
+            <div class="matrix" role="table" aria-label="How well CV upload and direct chat fit each group, rated out of 5">
+                <div class="mx-row mx-head" role="row"><span role="columnheader"></span><span class="mx-col" role="columnheader">CV upload</span><span class="mx-col is-chat" role="columnheader">Direct chat</span></div>
+                <p class="mx-group">Job seeker</p>
+                <div class="mx-row" role="row"><span class="mx-name" role="rowheader">Entry-level</span><span class="mx-dots" role="cell" aria-label="2 of 5"><i class="d on" style="--i:0"></i><i class="d on" style="--i:1"></i><i class="d" style="--i:2"></i><i class="d" style="--i:3"></i><i class="d" style="--i:4"></i></span><span class="mx-dots is-win" role="cell" aria-label="5 of 5"><i class="d on" style="--i:0"></i><i class="d on" style="--i:1"></i><i class="d on" style="--i:2"></i><i class="d on" style="--i:3"></i><i class="d on" style="--i:4"></i></span></div>
+                <div class="mx-row" role="row"><span class="mx-name" role="rowheader">Mid-level</span><span class="mx-dots" role="cell" aria-label="2 of 5"><i class="d on" style="--i:2"></i><i class="d on" style="--i:3"></i><i class="d" style="--i:4"></i><i class="d" style="--i:5"></i><i class="d" style="--i:6"></i></span><span class="mx-dots" role="cell" aria-label="2 of 5"><i class="d on" style="--i:2"></i><i class="d on" style="--i:3"></i><i class="d" style="--i:4"></i><i class="d" style="--i:5"></i><i class="d" style="--i:6"></i></span></div>
+                <div class="mx-row" role="row"><span class="mx-name" role="rowheader">Senior-level</span><span class="mx-dots" role="cell" aria-label="1 of 5"><i class="d on" style="--i:4"></i><i class="d" style="--i:5"></i><i class="d" style="--i:6"></i><i class="d" style="--i:7"></i><i class="d" style="--i:8"></i></span><span class="mx-dots" role="cell" aria-label="1 of 5"><i class="d on" style="--i:4"></i><i class="d" style="--i:5"></i><i class="d" style="--i:6"></i><i class="d" style="--i:7"></i><i class="d" style="--i:8"></i></span></div>
+                <p class="mx-group">Employer</p>
+                <div class="mx-row" role="row"><span class="mx-name" role="rowheader">Large companies</span><span class="mx-dots is-win" role="cell" aria-label="5 of 5"><i class="d on" style="--i:6"></i><i class="d on" style="--i:7"></i><i class="d on" style="--i:8"></i><i class="d on" style="--i:9"></i><i class="d on" style="--i:10"></i></span><span class="mx-dots" role="cell" aria-label="2 of 5"><i class="d on" style="--i:6"></i><i class="d on" style="--i:7"></i><i class="d" style="--i:8"></i><i class="d" style="--i:9"></i><i class="d" style="--i:10"></i></span></div>
+                <div class="mx-row" role="row"><span class="mx-name" role="rowheader">Medium companies</span><span class="mx-dots is-win" role="cell" aria-label="4 of 5"><i class="d on" style="--i:8"></i><i class="d on" style="--i:9"></i><i class="d on" style="--i:10"></i><i class="d on" style="--i:11"></i><i class="d" style="--i:12"></i></span><span class="mx-dots" role="cell" aria-label="3 of 5"><i class="d on" style="--i:8"></i><i class="d on" style="--i:9"></i><i class="d on" style="--i:10"></i><i class="d" style="--i:11"></i><i class="d" style="--i:12"></i></span></div>
+                <div class="mx-row" role="row"><span class="mx-name" role="rowheader">Small businesses</span><span class="mx-dots" role="cell" aria-label="3 of 5"><i class="d on" style="--i:10"></i><i class="d on" style="--i:11"></i><i class="d on" style="--i:12"></i><i class="d" style="--i:13"></i><i class="d" style="--i:14"></i></span><span class="mx-dots is-win" role="cell" aria-label="4 of 5"><i class="d on" style="--i:10"></i><i class="d on" style="--i:11"></i><i class="d on" style="--i:12"></i><i class="d on" style="--i:13"></i><i class="d" style="--i:14"></i></span></div>
+            </div>
+                <figcaption>Chat wins for entry-level candidates and small businesses, exactly the users Glints served. Rated out of 5, from the same study.</figcaption>
+            </figure>
+
+            <p>Leadership made chat the bet for Vietnam, then for Indonesia. It matched what I had seen in research, so the question for design was clear: how do you make chat the first step without taking away the screening a resume gives employers?</p>
+
+            <div class="takeaway">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 18h6M10 22h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+                <p>Hypothesis: resume-first hiring was too slow for a mobile, small-business market. Chat could make the loop faster.</p>
+            </div>
+        </div>
+
+        <div class="case-study-section">
+            <h2>The Key Decision Wasn't Removing the Resume</h2>
+            <p class="section-sub">It was to stop making the resume the first commitment.</p>
+            <p>We looked at two lighter options first. Each fixed one part of the problem and left the other.</p>
+
+            <div class="options">
+                <div class="option">
+                    <span class="tag">Incremental fix</span>
+                    <h4>Make resume upload easier</h4>
+                    <p>Less friction, but candidates still had to prove themselves before anyone replied.</p>
+                </div>
+                <div class="option">
+                    <span class="tag">Partial fix</span>
+                    <h4>Add chat after applying</h4>
+                    <p>Better follow-up, but it did nothing for the people who dropped off before applying.</p>
+                </div>
+                <div class="option chosen">
+                    <svg class="option-art" viewBox="0 0 64 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M6 6h30a4 4 0 0 1 4 4v16a4 4 0 0 1-4 4H18l-8 7v-7H6a4 4 0 0 1-4-4V10a4 4 0 0 1 4-4Z" class="art-paper"/>
+                        <path d="M28 18h30a4 4 0 0 1 4 4v14a4 4 0 0 1-4 4h-4v7l-8-7H28a4 4 0 0 1-4-4V22a4 4 0 0 1 4-4Z" class="art-accent"/>
+                    </svg>
+                    <span class="tag">Chosen direction</span>
+                    <h4>Make chat the first action</h4>
+                    <p>A lower first commitment and a faster reply. The resume moves into the conversation, when the employer asks for it.</p>
+                </div>
+            </div>
+
+            <p>For candidates, "Chat to apply" replaced "Apply" on the job page. Instead of a form that starts with "Upload my resume", applying became the first message of a conversation. The employer asks for the resume when they want it.</p>
+
+            <div class="case-study-image">
+                <img src="assets/glints-chat-before-after.jpg" alt="Before: an apply form that starts with resume upload. After: a chat where the hiring manager asks for the CV" loading="lazy">
+                <p class="image-caption">Before: the resume as the gate. After: chat as the first action, with the CV asked for inside the conversation.</p>
+            </div>
+
+            <p>Chat only works if employers answer, so the employer side mattered as much. Instead of a separate inbox they'd forget, chat went into the screens employers already used to screen candidates. From the candidate list, a chat widget opens on top, so the employer never leaves the table.</p>
+
+            <div class="case-study-image">
+                <img src="assets/glints-employer-chat-widget.jpg" alt="Employer web: the chat widget open over the candidate list" loading="lazy">
+                <p class="image-caption">The chat widget opens over the candidate list.</p>
+            </div>
+
+            <p>For working through many conversations at once, the full Chats page keeps the candidate list beside the conversation. Accepting a CV, opening WhatsApp and moving a candidate on all happen inside the chat.</p>
+
+            <div class="case-study-image">
+                <img src="assets/glints-employer-chat-page.jpg" alt="Employer web: the Chats page with the candidate list beside the conversation and a CV to accept" loading="lazy">
+                <p class="image-caption">The Chats page: candidates beside the conversation, and the CV accepted in the chat.</p>
+            </div>
+
+            <div class="takeaway">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>
+                <p>We kept the resume as a later check, so employers kept the signal they trusted.</p>
+            </div>
+        </div>
+
+        <div class="case-study-section">
+            <h2>Vietnam: A Slow Start, Then a Fix Every Week</h2>
+            <p class="section-sub">Candidates started chatting right away. Employers didn't reply.</p>
+            <p>Chat went live in the Vietnam app on 3 March 2023. In the first week, only 3.4% of chats got a reply. The bottleneck wasn't the candidate side. It was employers who didn't know the chat was there, or didn't check it.</p>
+            <p>So we treated the reply rate as the product, on both sides. Almost every week, we shipped something that made replying easier or more visible. Most of the work was on the employer side: chat had to become part of how employers already screened candidates, not one more place to check.</p>
+
+            <div class="timeline" role="list" aria-label="Chat releases in Vietnam, March to June 2023">
+                <p class="tl-label tl-label-cand">Candidate app</p>
+                <p class="tl-label tl-label-emp">Employer web</p>
+
+                <div class="tl-axis is-launch" style="--m:1"><span>Mar</span></div>
+                <div class="tl-group tl-cand" style="--m:1" role="listitem">
+                    <div class="tl-ev is-launch"><span class="date">3 Mar</span><span class="tag">Candidate</span><span class="what">Chat launches</span></div>
+                    <div class="tl-ev"><span class="date">27 Mar</span><span class="tag">Candidate</span><span class="what">Template messages</span></div>
+                </div>
+                <div class="tl-group tl-emp" style="--m:1"></div>
+
+                <div class="tl-axis" style="--m:2"><span>Apr</span></div>
+                <div class="tl-group tl-cand" style="--m:2" role="listitem">
+                    <div class="tl-ev"><span class="date">10 Apr</span><span class="tag">Candidate</span><span class="what">Chat inbox</span></div>
+                </div>
+                <div class="tl-group tl-emp" style="--m:2" role="listitem">
+                    <div class="tl-ev"><span class="tag">Employer</span><span class="what">Chat button on the candidate table and profile</span></div>
+                </div>
+
+                <div class="tl-axis" style="--m:3"><span>May</span></div>
+                <div class="tl-group tl-cand" style="--m:3" role="listitem">
+                    <div class="tl-ev"><span class="date">9 May</span><span class="tag">Candidate</span><span class="what">Application status inside chat</span></div>
+                </div>
+                <div class="tl-group tl-emp" style="--m:3" role="listitem">
+                    <div class="tl-ev"><span class="tag">Employer</span><span class="what">Chat list filters and status</span></div>
+                    <div class="tl-ev"><span class="tag">Employer</span><span class="what">Media, edit and delete in chat</span></div>
+                </div>
+
+                <div class="tl-axis is-last" style="--m:4"><span>Jun</span></div>
+                <div class="tl-group tl-cand" style="--m:4" role="listitem">
+                    <div class="tl-ev"><span class="date">5 Jun</span><span class="tag">Candidate</span><span class="what">Employer online status</span></div>
+                </div>
+                <div class="tl-group tl-emp" style="--m:4" role="listitem">
+                    <div class="tl-ev"><span class="tag">Employer</span><span class="what">New-message alerts on Zalo</span></div>
+                </div>
+            </div>
+
+            <p>By May, about 30% of chats got a reply within two weeks. Boss Zhipin's own benchmark was around 20%.</p>
+
+            <p>The bigger change was in connections. In a chat, there's no separate shortlist step, so we measured connections instead: a shortlist, a CV exchange or a phone exchange.</p>
+
+            <div class="chart" role="img" aria-label="Share of applications that led to a connection in Vietnam, by month. November 2022 to February 2023, all applications: 8.2%, 7.5%, 7.1%, 9.5%. March to June 2023, chats only: 23.9%, 30.6%, 39.4%, 35.8%.">
+                <div class="chart-legend">
+                    <span class="before">Before chat: all applications</span>
+                    <span class="after">After launch: chats only</span>
+                </div>
+                <svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg">
+                    <!-- y scale: 0–40% over 200px, baseline y=230 -->
+                    <line class="grid" x1="44" y1="230" x2="716" y2="230"/>
+                    <line class="grid" x1="44" y1="180" x2="716" y2="180"/>
+                    <line class="grid" x1="44" y1="130" x2="716" y2="130"/>
+                    <line class="grid" x1="44" y1="80" x2="716" y2="80"/>
+                    <line class="grid" x1="44" y1="30" x2="716" y2="30"/>
+                    <text class="axis-label" x="36" y="234" text-anchor="end">0%</text>
+                    <text class="axis-label" x="36" y="184" text-anchor="end">10%</text>
+                    <text class="axis-label" x="36" y="134" text-anchor="end">20%</text>
+                    <text class="axis-label" x="36" y="84" text-anchor="end">30%</text>
+                    <text class="axis-label" x="36" y="34" text-anchor="end">40%</text>
+
+                    <!-- before: 8.19, 7.51, 7.14, 9.52 -->
+                    <rect style="--i:0" class="bar-before" x="62"  y="189.0" width="56" height="41.0" rx="4"><title>Nov 2022: 8.2% (all applications)</title></rect>
+                    <rect style="--i:1" class="bar-before" x="144" y="192.4" width="56" height="37.6" rx="4"><title>Dec 2022: 7.5% (all applications)</title></rect>
+                    <rect style="--i:2" class="bar-before" x="226" y="194.3" width="56" height="35.7" rx="4"><title>Jan 2023: 7.1% (all applications)</title></rect>
+                    <rect style="--i:3" class="bar-before" x="308" y="182.4" width="56" height="47.6" rx="4"><title>Feb 2023: 9.5% (all applications)</title></rect>
+
+                    <line class="divider" x1="390" y1="14" x2="390" y2="230"/>
+                    <text class="note" x="398" y="22">Chat launches, 3 Mar 2023</text>
+
+                    <!-- after: 23.92, 30.59, 39.42, 35.76 -->
+                    <rect style="--i:4" class="bar-after" x="416" y="110.4" width="56" height="119.6" rx="4"><title>Mar 2023: 23.9% (chats only)</title></rect>
+                    <rect style="--i:5" class="bar-after" x="498" y="77.1"  width="56" height="152.9" rx="4"><title>Apr 2023: 30.6% (chats only)</title></rect>
+                    <rect style="--i:6" class="bar-after" x="580" y="32.9"  width="56" height="197.1" rx="4"><title>May 2023: 39.4% (chats only)</title></rect>
+                    <rect style="--i:7" class="bar-after" x="662" y="51.2"  width="56" height="178.8" rx="4"><title>Jun 2023: 35.8% (chats only)</title></rect>
+
+                    <text class="value" x="90"  y="180" text-anchor="middle">8%</text>
+                    <text class="value" x="608" y="26"  text-anchor="middle">39%</text>
+
+                    <text class="axis-label" x="90"  y="252" text-anchor="middle">Nov</text>
+                    <text class="axis-label" x="172" y="252" text-anchor="middle">Dec</text>
+                    <text class="axis-label" x="254" y="252" text-anchor="middle">Jan</text>
+                    <text class="axis-label" x="336" y="252" text-anchor="middle">Feb</text>
+                    <text class="axis-label" x="444" y="252" text-anchor="middle">Mar</text>
+                    <text class="axis-label" x="526" y="252" text-anchor="middle">Apr</text>
+                    <text class="axis-label" x="608" y="252" text-anchor="middle">May</text>
+                    <text class="axis-label" x="690" y="252" text-anchor="middle">Jun</text>
+                    <text class="axis-label" x="212" y="272" text-anchor="middle">2022–23</text>
+                    <text class="axis-label" x="566" y="272" text-anchor="middle">2023</text>
+                </svg>
+            </div>
+            <p class="source">Share of applications that led to a connection, Vietnam. Source: Vietnam weekly business review, Jun 2023. After launch, the data counts chats only, about a tenth of the earlier application volume, so the two halves aren't a like-for-like comparison.</p>
+
+            <div class="takeaway">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <p>About 8% of applications led to a connection before chat. With chat, it was 30–39%.</p>
+            </div>
+        </div>
+
+        <div class="case-study-section">
+            <h2>Bringing It to Indonesia</h2>
+            <p class="section-sub">A bigger market, and a lot changing at the same time.</p>
+            <p>After Vietnam, I adapted the design for Indonesia, Glints' largest market. Chat to apply launched there on 7 July 2023, together with a new application form that no longer required a CV for any job category.</p>
+
+            <p>Two things changed on the way. Indonesia's application form already had screening questions built for its market, so chat to apply had to work with them rather than around them. And in Vietnam, candidates sent their CV by hand when the employer asked. In Indonesia, we sent it automatically, so more applications reached employers with a resume attached.</p>
+
+            <p>Sign-up-to-apply went up in the weeks after launch. But marketing spend and targeting changed in the same window, and so did the application form, so I don't read the rise as chat alone. Chat also started small: in late August, about 5% of connections came through it. Most still came from employers updating an application's status.</p>
+
+            <div class="takeaway">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 9v4M12 17h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                <p>A launch that ships with other big changes can't be measured cleanly. Next time, I'd plan the measurement before the launch date.</p>
+            </div>
+        </div>
+
+        <div class="case-study-section">
+            <h2>What It Led To</h2>
+            <p>The bigger effect was on the product. Chat became the centre of the employer app I designed and launched in 2024, where processing candidates happens inside the conversation.</p>
+            <p>Two years later, research showed that employers still screened in the candidate table, and used chat to follow up. So I proposed connecting the two instead of choosing one. The new candidate profile and chat, with CV and conversation side by side, shipped in 2026.</p>
         </div>
 
         <div class="case-study-section">
             <h2>Reflections</h2>
             <div class="key-points">
                 <ul>
-                    <li><strong>Business Alignment:</strong> The design must drive measurable KPIs.</li>
-                    <li><strong>Cross-functional leadership:</strong> Balancing user needs, business goals, and technical feasibility was key.</li>
-                    <li><strong>Market Adaptation:</strong> Competitive research helped shape our product & UX strategy.</li>
-                    <li><strong>Scaling Design at Speed:</strong> A design system was essential for maintaining consistency while rapidly iterating.</li>
+                    <li><strong>What to replace matters more than what to add.</strong> The hardest design decision wasn't building chat. It was deciding the resume would no longer be the first step.</li>
+                    <li><strong>A two-sided product is only as fast as its slower side.</strong> Candidates adopted chat on day one. The work that moved the numbers was on the employer side.</li>
+                    <li><strong>Measure the bet, not just the launch.</strong> Vietnam had a clean read. Indonesia didn't, because too much changed at once.</li>
                 </ul>
             </div>
+            <p class="credits">Built with the Vietnam marketplace team: a product lead, engineers on app and web, and our researchers, who helped with the 2022 study and later studied why employers did or didn't adopt chat.</p>
         </div>
 
         <div class="case-study-nav">
@@ -346,6 +453,6 @@
         </div>
     </main>
 
-    <script src="script.js?v=20261127product"></script>
+    <script src="script.js?v=20261127c2a"></script>
 </body>
-</html> 
+</html>
