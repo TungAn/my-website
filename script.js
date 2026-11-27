@@ -38,6 +38,18 @@ initializeTheme();
 // Project data
 const projects = [
     {
+        year: '2025–26',
+        logo: {
+            dark: 'assets/glints-logo.svg?v=2',
+            light: 'assets/glints-logo-light.svg?v=2'
+        },
+        title: 'Glints Shortlist Quota',
+        description: 'Employers dodged the per-job limit by posting again. One monthly quota for the company, with prices at the wall, nearly doubled the share who bought after hitting it.',
+        readTime: '10 min read',
+        link: 'glints-shortlist-quota',
+        expandable: true
+    },
+    {
         year: '2022–23',
         logo: {
             dark: 'assets/glints-logo.svg?v=2',
@@ -59,18 +71,6 @@ const projects = [
         description: 'We started with the market that had the most payment methods, then scaled to six. Wallet adoption went up 17%, and cash-on-delivery dropped 14%.',
         readTime: '10 min read',
         link: 'lazada-case-study',
-        expandable: true
-    },
-    {
-        year: '2016',
-        logo: {
-            dark: 'assets/popjam-logo.svg',
-            light: 'assets/popjam-logo-light.svg'
-        },
-        title: 'PopJam',
-        description: 'Leadership wanted a video app, but we built Kid Challenges instead. 1.2M users across APAC in 8 months.',
-        readTime: '7 min read',
-        link: 'popjam-case-study',
         expandable: true
     }
 ];
@@ -401,7 +401,7 @@ function initCardGlow() {
     });
     document.documentElement.addEventListener('pointerleave', () => glow.classList.remove('is-on'));
 
-    const selector = '.project-link, .current-role .company-details li, .insight-card, .key-points, .quote, .result-item, .case-study-image, .barrier, .option, .matrix, .hero-chat';
+    const selector = '.project-link, .current-role .company-details li, .insight-card, .key-points, .quote, .result-item, .case-study-image, .barrier, .option, .matrix, .hero-chat, .how-flow li, .model, .hero-move, .decision, .sitemap';
     let active = null;
 
     const reset = (card) => {
