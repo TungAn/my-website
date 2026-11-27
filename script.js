@@ -40,8 +40,8 @@ const projects = [
     {
         year: '2025–26',
         logo: {
-            dark: 'assets/glints-logo.svg?v=2',
-            light: 'assets/glints-logo-light.svg?v=2'
+            dark: 'assets/glints-logo.svg?v=3',
+            light: 'assets/glints-logo-light.svg?v=4'
         },
         title: 'Glints Shortlist Quota',
         description: 'Employers dodged the per-job limit by posting again. One monthly quota for the company, with prices at the wall, nearly doubled the share who bought after hitting it.',
@@ -52,8 +52,8 @@ const projects = [
     {
         year: '2022–23',
         logo: {
-            dark: 'assets/glints-logo.svg?v=2',
-            light: 'assets/glints-logo-light.svg?v=2'
+            dark: 'assets/glints-logo.svg?v=3',
+            light: 'assets/glints-logo-light.svg?v=4'
         },
         title: 'Glints Chat to Apply',
         description: 'The resume was the first barrier to applying. Making chat the first action got applications processed faster.',
