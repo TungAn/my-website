@@ -1415,3 +1415,52 @@
     .sitemap .sm-tile, .sitemap .sm-note, .sm-flow path.sm-hot,
     .decision [class*="dk-"] { animation: none !important; }
 }
+
+/* ===== Quota stack: free, VIP and add-on pile into one company quota; a boosted job sits apart ===== */
+.qstack {
+    position: relative; isolation: isolate;
+    margin: var(--gap-block) 0; padding: 1.5rem; border-radius: 16px;
+    background: rgba(var(--primary-rgb), 0.04); border: 1px solid rgba(var(--primary-rgb), 0.1);
+    --tower: 128px;
+}
+.qstack > .card-glow { z-index: 0; }
+.qstack > .card-glow::after { inset: 0; }
+.qs-wrap { position: relative; z-index: 1; display: flex; justify-content: center; align-items: flex-end; gap: 2rem; }
+.qs-group.apart { padding-left: 2rem; border-left: 1px dashed rgba(var(--primary-rgb), 0.18); }
+.case-study .qstack p.qs-cap { margin: 0 0 0.75rem; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: rgba(var(--primary-rgb), 0.5); }
+.qs-stack { display: grid; gap: 3px; }
+.qs-layer { display: grid; grid-template-columns: var(--tower) auto; align-items: center; column-gap: 0.85rem; }
+.qs-seg { display: block; border-radius: 4px; }
+.qs-seg.free { height: 26px; background: rgba(var(--primary-rgb), 0.15); }
+.qs-seg.vip { height: 58px; background: var(--highlight-color); }
+.qs-seg.addon { height: 34px; background: rgba(255, 107, 0, 0.35); }
+.qs-seg.boost { height: 34px; border-radius: 8px; background: var(--highlight-color-secondary); }
+.qs-stack .qs-layer:first-child .qs-seg { border-top-left-radius: 8px; border-top-right-radius: 8px; }
+.qs-stack .qs-layer:last-child .qs-seg { border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
+.case-study .qstack .qs-layer p { margin: 0; font-size: 0.75rem; line-height: 1.3; color: var(--secondary-color); white-space: nowrap; }
+.qstack .qs-layer b { display: block; font-size: 0.8125rem; color: var(--primary-color); }
+.qstack .apart .qs-layer { grid-template-columns: 72px; row-gap: 0.5rem; }
+/* layers drop onto the pile once, bottom first, when the figure scrolls into view */
+.qstack .qs-stack .qs-layer { opacity: 0; transform: translateY(-18px); transition: opacity 0.4s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1); }
+.qstack .qs-stack .l1 { transition-delay: 0.05s; }
+.qstack .qs-stack .l2 { transition-delay: 0.35s; }
+.qstack .qs-stack .l3 { transition-delay: 0.65s; }
+.qstack.in-view .qs-stack .qs-layer { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .qstack .qs-stack .qs-layer { transition: none; opacity: 1; transform: none; } }
+@media (max-width: 767px) {
+    .qstack { padding: 1.1rem 1rem; --tower: 84px; }
+    .qs-wrap { gap: 1rem; }
+    .qs-group.apart { padding-left: 1rem; }
+    .qs-layer { column-gap: 0.6rem; }
+    .qstack .apart .qs-layer { grid-template-columns: 64px; }
+}
+
+/* One card style for every figure, same as the hero: glass panel, grey wireframe tiles inside */
+.decision, .sitemap, .qstack, .sys, .case-study .model {
+    border-radius: var(--border-radius);
+    background: var(--glass-bg);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    box-shadow: inset 0 1px 0 var(--glass-highlight), 0 8px 32px var(--glass-edge);
+}

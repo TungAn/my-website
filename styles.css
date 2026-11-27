@@ -2066,9 +2066,6 @@ body {
     --glass-edge: rgba(17, 17, 17, 0.06);
     --glass-highlight: rgba(255, 255, 255, 0.9);
     --glass-blur: blur(22px) saturate(170%);
-    --ambient-1: rgba(255, 122, 26, 0.16);
-    --ambient-2: rgba(90, 120, 255, 0.12);
-    --ambient-3: rgba(30, 190, 170, 0.10);
 }
 
 [data-theme='dark'] {
@@ -2076,19 +2073,11 @@ body {
     --glass-border: rgba(255, 255, 255, 0.12);
     --glass-edge: rgba(0, 0, 0, 0.35);
     --glass-highlight: rgba(255, 255, 255, 0.14);
-    --ambient-1: rgba(255, 107, 0, 0.16);
-    --ambient-2: rgba(80, 110, 255, 0.13);
-    --ambient-3: rgba(20, 180, 160, 0.08);
 }
 
-/* Soft colour behind the page, so the glass has something to blur */
+/* Plain page background; the pointer glow and glass cards carry the depth */
 html {
     background-color: var(--background-color);
-    background-image:
-        radial-gradient(40rem 30rem at 12% 8%, var(--ambient-1), transparent 70%),
-        radial-gradient(45rem 35rem at 92% 38%, var(--ambient-2), transparent 70%),
-        radial-gradient(40rem 32rem at 20% 88%, var(--ambient-3), transparent 70%);
-    background-attachment: fixed;
 }
 
 body {

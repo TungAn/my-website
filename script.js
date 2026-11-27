@@ -401,7 +401,7 @@ function initCardGlow() {
     });
     document.documentElement.addEventListener('pointerleave', () => glow.classList.remove('is-on'));
 
-    const selector = '.project-link, .current-role .company-details li, .insight-card, .key-points, .quote, .result-item, .case-study-image, .barrier, .option, .matrix, .hero-chat, .how-flow li, .model, .hero-move, .decision, .sitemap';
+    const selector = '.project-link, .current-role .company-details li, .insight-card, .key-points, .quote, .result-item, .case-study-image, .barrier, .option, .matrix, .hero-chat, .how-flow li, .model, .hero-move, .decision, .sitemap, .qstack';
     let active = null;
 
     const reset = (card) => {
@@ -500,7 +500,7 @@ document.addEventListener('DOMContentLoaded', initHeaderAutoHide);
 
 // Case study figures (matrix, chart, timeline): animate once when they scroll into view
 (function () {
-    var els = document.querySelectorAll('.matrix, .chart, .timeline');
+    var els = document.querySelectorAll('.matrix, .chart, .timeline, .qstack');
     if (!els.length) return;
     document.querySelectorAll('.timeline').forEach(function (el) { el.classList.add('tl-anim'); });
     if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('in-view'); }); return; }
