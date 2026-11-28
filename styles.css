@@ -2669,3 +2669,10 @@ main > section:not(#intro) > h2 + * {
         margin-top: 0.75rem;
     }
 }
+
+/* Small phones (iPhone SE and similar): the header links need a little less room so the page stays 320px wide */
+@media (max-width: 360px) {
+    body header { padding-left: 0.75rem; padding-right: 0.75rem; }
+    body header nav { gap: 0.6rem; }
+    body header nav a { font-size: 0.875rem; }
+}
