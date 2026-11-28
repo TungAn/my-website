@@ -663,3 +663,52 @@ document.addEventListener('DOMContentLoaded', initHeaderAutoHide);
         }
     }
 })();
+
+// Scroll slideshow: pin the frame and swap screens as the reader scrolls past it
+(function () {
+    document.querySelectorAll('.scrolly').forEach(function (box) {
+        var stage = box.querySelector('.sc-stage');
+        var slides = box.querySelectorAll('.sc-slide');
+        var steps = box.querySelectorAll('.sc-steps button');
+        var cap = box.querySelector('.sc-cap');
+        var n = slides.length;
+        if (!stage || n < 2) return;
+        box.classList.add('is-on');
+        var current = -1;
+        function stepLen() { return Math.max(window.innerHeight * 0.55, 280); }
+        function size() { box.style.height = (stage.offsetHeight + (n - 1) * stepLen()) + 'px'; }
+        function stickyTop() { return parseFloat(getComputedStyle(stage).top) || 0; }
+        function show(i) {
+            if (i === current) return;
+            current = i;
+            slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
+            steps.forEach(function (b, k) { b.classList.toggle('is-active', k === i); b.setAttribute('aria-current', k === i ? 'step' : 'false'); });
+            if (cap) cap.innerHTML = slides[i].getAttribute('data-cap') || '';
+            moveThumb();
+        }
+        var list = box.querySelector('.sc-steps');
+        var thumb = null;
+        if (list) { thumb = document.createElement('li'); thumb.className = 'sc-thumb'; thumb.setAttribute('aria-hidden', 'true'); list.prepend(thumb); }
+        function moveThumb() {
+            if (!thumb || current < 0) return;
+            var b = steps[current];
+            thumb.style.width = b.offsetWidth + 'px';
+            thumb.style.transform = 'translateX(' + b.parentNode.offsetLeft + 'px)';
+        }
+        function update() {
+            var passed = stickyTop() - box.getBoundingClientRect().top;
+            var i = Math.round(Math.min(Math.max(passed / stepLen(), 0), n - 1));
+            show(i);
+        }
+        steps.forEach(function (b, k) {
+            b.addEventListener('click', function () {
+                var y = box.getBoundingClientRect().top + window.scrollY - stickyTop() + k * stepLen() + 2;
+                window.scrollTo({ top: y, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+            });
+        });
+        box.querySelectorAll('.sc-slide img, img.sc-slide').forEach(function (im) { im.loading = 'eager'; if (!im.complete) im.addEventListener('load', size); });
+        size(); show(0); update();
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', function () { size(); update(); moveThumb(); });
+    });
+})();
