@@ -44,7 +44,7 @@ const projects = [
             light: 'assets/glints-logo-light.svg?v=4'
         },
         title: 'Glints Shortlist Quota',
-        description: 'Employers kept posting the same job again to get more shortlists. Moving to one monthly quota for the whole company, with prices shown at the limit, almost doubled the share who bought after hitting it.',
+        description: 'Employers reposted jobs to get more shortlists. One monthly quota per company, with prices at the limit, almost doubled the share who bought.',
         readTime: '10 min read',
         link: 'glints-shortlist-quota',
         expandable: true
@@ -56,7 +56,7 @@ const projects = [
             light: 'assets/glints-logo-light.svg?v=4'
         },
         title: 'Glints Employer Workspace',
-        description: 'Employers screened in the table, but had to jump to the profile, chat, the CV and WhatsApp to decide on one candidate. Separating navigation and connecting evaluation around the table brought that decision into one place.',
+        description: 'Screening one candidate took five screens. Connecting evaluation around the table brought it into one, now built and through internal testing.',
         readTime: '8 min read',
         link: 'glints-employer-workspace',
         expandable: true
@@ -68,7 +68,7 @@ const projects = [
             light: 'assets/glints-logo-light.svg?v=4'
         },
         title: 'Glints Chat to Apply',
-        description: 'Many candidates stopped at the resume step and never applied. Letting them start with a chat instead got their applications processed faster.',
+        description: 'Candidates dropped off at the resume step. Starting with a chat instead got their applications processed faster.',
         readTime: '8 min read',
         link: 'glints-case-study',
         expandable: true
@@ -80,7 +80,7 @@ const projects = [
             light: 'assets/laz-logo-light.svg'
         },
         title: 'Lazada Payment Revamp',
-        description: 'We started with the market that had the most payment methods, then scaled to six. Wallet adoption went up 17%, and cash-on-delivery dropped 14%.',
+        description: 'We started with the market that had the most payment methods, then scaled to six. Wallet adoption rose 17% and cash-on-delivery fell 14%.',
         readTime: '10 min read',
         link: 'lazada-case-study',
         expandable: true
