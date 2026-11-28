@@ -50,6 +50,18 @@ const projects = [
         expandable: true
     },
     {
+        year: '2025–26',
+        logo: {
+            dark: 'assets/glints-logo.svg?v=3',
+            light: 'assets/glints-logo-light.svg?v=4'
+        },
+        title: 'Glints Employer Workspace',
+        description: 'Employers screened in the table, but had to jump to the profile, chat, the CV and WhatsApp to decide on one candidate. Separating navigation and connecting evaluation around the table brought that decision into one place.',
+        readTime: '8 min read',
+        link: 'glints-employer-workspace',
+        expandable: true
+    },
+    {
         year: '2022–23',
         logo: {
             dark: 'assets/glints-logo.svg?v=3',
@@ -401,7 +413,7 @@ function initCardGlow() {
     });
     document.documentElement.addEventListener('pointerleave', () => glow.classList.remove('is-on'));
 
-    const selector = '.project-link, .current-role .company-details li, .insight-card, .key-points, .quote, .result-item, .case-study-image, .barrier, .option, .matrix, .hero-chat, .how-flow li, .model, .hero-move, .decision, .sitemap, .qstack';
+    const selector = '.project-link, .current-role .company-details li, .insight-card, .key-points, .quote, .result-item, .case-study-image, .barrier, .option, .matrix, .hero-chat, .how-flow li, .model, .hero-move, .decision, .sitemap, .qstack, .ws-fig';
     let active = null;
 
     const reset = (card) => {

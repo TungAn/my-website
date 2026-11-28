@@ -16,6 +16,10 @@
       "dest": "/glints-shortlist-quota.html"
     },
     {
+      "src": "/glints-employer-workspace",
+      "dest": "/glints-employer-workspace.html"
+    },
+    {
       "src": "/lazada-case-study",
       "dest": "/lazada-case-study.html"
     },
@@ -31,4 +35,4 @@
   "github": {
     "silent": true
   }
-} 
+}
